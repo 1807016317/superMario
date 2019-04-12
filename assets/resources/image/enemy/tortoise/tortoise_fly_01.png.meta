@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "b015f84e-78db-41d6-a3ab-86c55c927716",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "tortoise_fly_01": {
+      "ver": "1.0.3",
+      "uuid": "f7688547-f89c-4e4e-8f07-49aa635573d0",
+      "rawTextureUuid": "b015f84e-78db-41d6-a3ab-86c55c927716",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 18,
+      "height": 24,
+      "rawWidth": 18,
+      "rawHeight": 24,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="238" height="14" tilewidth="16" tileheight="16" infinite="0" nextobjectid="43">
+ <tileset firstgid="1" name="superMarioMap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="900" columns="30">
+  <image source="superMarioMap.png" width="511" height="511"/>
+  <tile id="0">
+   <properties>
+    <property name="blockType" value="2"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="collisionType" type="int" value="10"/>
+   </properties>
+  </tile>
+  <tile id="120">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="150">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="241">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="336">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="337">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="338">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="533">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="600">
+   <properties>
+    <property name="blockType" value="1"/>
+    <property name="collisionType" type="int" value="9"/>
+   </properties>
+  </tile>
+  <tile id="660">
+   <properties>
+    <property name="collisionType" type="int" value="3"/>
+   </properties>
+  </tile>
+  <tile id="844">
+   <properties>
+    <property name="collisionType" type="int" value="4"/>
+   </properties>
+  </tile>
+  <tile id="845">
+   <properties>
+    <property name="blockType" value="3"/>
+    <property name="collisionType" type="int" value="5"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMA6DB+61/nOU4KNhLqqqqqqqqqqqqqqqqqr44bIoegQ==
+  </data>
+ </layer>
+ <layer name="scenery" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztmEtOwzAURUNmrAMJugz+nUFhAcAERny6AOiEjtLCOkphHaGwKq6lWnJChCHxy3PKPdKRpUj1u7J0JddJQgj5r5zBc3ihnKMuzK8L83/nOE2SATxJ5Wbfwwc4qvHbUDA/8zchtvw36OstvPP0NoazawLz68L84cjQ1Qmcwif47OkuIUSfGXr6AufwFb51pLeX8Eo7RAOYX5eu58/R03e4gB/ws0Zv2zoDd84jHAvsKwnz+/eVZBXyZ8s78aRC8z1b9vcoLb5bnVb0OuQZ/ITUHObXncP8v59j7sfWeWm1Gq7T4rvVsCP3aEJWEXM/ti6ctdxbvlsREg9ub2cVq+1t2+9WXX8vYH5dQuXXOgffXPeOnJdW219DiHerv9DWfwUpmF8XX/71QPtI4ZtbdUd211y4n22xoR2ARMMm3II97SARMVwrGgPbcAfuKucg+uzBfXgAD2FfN444X+oYgaE=
+  </data>
+ </layer>
+ <layer name="flagpole" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt00EJACAAwEDtX8lgPs0gCDK4S7DPxgAAbqz5uwC4tX0LOb6FHt9Cj2+hx7fQ41vo8S30+BZ6fAsAAG8cAy8Jfw==
+  </data>
+ </layer>
+ <layer name="land" width="238" height="14">
+  <properties>
+   <property name="collisionType" type="int" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztmsENwjAMABPEDOwFLMKXSToMWzEBVKJShJxgt06ToDvJj1Zy7CQ+9dMQAAAAQMsjtu4AAAAAAGBfpk8AwBhMAW8BRmIKeAswEt/O4u3/M9/xU4i1d3906gt0SM724m3ajzRjlti6hke+tL9W+bk7lt6vdTLNq3F+FjT10xrLO+2zdn8efuWc7cFb7348zso737Kmd77FWwmryz2ev2cNbe7WmS4529rbGv30ODcje2vF8/ys305t/b29tdb75axmvdPBWPTNvRAL5xjCRYjrxn+08FaXO4q31no9eJub7VykM19yp2XUBm91uXi7Dm3uLeojpaWbL0QT8xs=
+  </data>
+ </layer>
+ <layer name="noCoinBlock" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzt0rEJAAAIBLFfzP3XcgUbBSHpr7sEAAAAYEcddzDlMQAAAAAAAADgswb6nAC4
+  </data>
+ </layer>
+ <layer name="prop" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzjENADAIADAy9CEA/0bmgYdlaRU0AgAAAOAtldsDftdnewAAAAAAAAAAMHcB/OkArA==
+  </data>
+ </layer>
+ <layer name="coinBlock" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7BjS/sXMYUIsiVYAgAAALCj63oAAAAAAAAAAAD/DNvKAFw=
+  </data>
+ </layer>
+ <layer name="coin" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7Di/6v/+oNbIYEkAAAAAAAA/XZ+AQAAAAAAoM0BR4kIQw==
+  </data>
+ </layer>
+ <layer name="pipe" width="238" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztw7EJAAAIA7D6sf9PHiC4uiSQBAAAAAAAAAAAAAAA4Na1Az8G/5wCNg==
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="1" name="player" type="player" x="32" y="176" width="14" height="16"/>
+  <object id="2" name="fly_fish_1" type="monster" x="319" y="195">
+   <properties>
+    <property name="duration" value="1"/>
+    <property name="offsetH" value="100"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="3" name="fly_fish_2" type="monster" x="410" y="195">
+   <properties>
+    <property name="duration" value="2"/>
+    <property name="offsetH" value="160"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="4" name="fly_fish_3" type="monster" x="540" y="199">
+   <properties>
+    <property name="duration" value="1.5"/>
+    <property name="offsetH" value="160"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="5" name="fly_fish_1" type="monster" x="629" y="201">
+   <properties>
+    <property name="duration" value="1.5"/>
+    <property name="offsetH" value="160"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="6" name="fly_fish_2" type="monster" x="726" y="201">
+   <properties>
+    <property name="duration" value="1.5"/>
+    <property name="offsetH" value="160"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="7" name="mushroom_mon" type="monster" x="752" y="136"/>
+  <object id="8" name="mushroom_mon" type="monster" x="784" y="136"/>
+  <object id="9" name="tortoise" type="monster" x="912" y="136"/>
+  <object id="10" name="mushroom_mon" type="monster" x="816" y="136"/>
+  <object id="11" name="fly_fish_3" type="monster" x="1134" y="198">
+   <properties>
+    <property name="duration" value="2"/>
+    <property name="offsetH" value="192"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="12" name="fly_fish_1" type="monster" x="1227" y="198">
+   <properties>
+    <property name="duration" value="1.5"/>
+    <property name="offsetH" value="192"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="13" name="mushroom_mon" type="monster" x="1456" y="128"/>
+  <object id="14" name="mushroom_mon" type="monster" x="1472" y="128"/>
+  <object id="15" name="tortoise" type="monster" x="1664" y="112">
+   <properties>
+    <property name="roundDis" value="64"/>
+   </properties>
+  </object>
+  <object id="16" name="gadget" type="ladderLR" x="1757" y="168">
+   <properties>
+    <property name="LorR" value="0"/>
+    <property name="ladderDis" value="32"/>
+   </properties>
+  </object>
+  <object id="17" name="gadget" type="ladderLR" x="1837" y="136">
+   <properties>
+    <property name="LorR" value="1"/>
+    <property name="ladderDis" value="48"/>
+   </properties>
+  </object>
+  <object id="18" name="gadget" type="ladderLR" x="1943" y="163">
+   <properties>
+    <property name="LorR" value="0"/>
+    <property name="ladderDis" value="32"/>
+   </properties>
+  </object>
+  <object id="19" name="fly_fish_2" type="moster" x="2104" y="198">
+   <properties>
+    <property name="duration" value="1"/>
+    <property name="offsetH" value="100"/>
+    <property name="offsetV" value="160"/>
+   </properties>
+  </object>
+  <object id="20" name="tortoise" type="moster" x="2464" y="160"/>
+  <object id="21" name="mushroom_mon" type="moster" x="3056" y="128"/>
+  <object id="22" name="mushroom_mon" type="moster" x="3072" y="128"/>
+  <object id="23" name="mushroom" type="prop" x="504" y="68"/>
+  <object id="25" name="mushroom" type="prop" x="1863" y="55"/>
+  <object id="27" name="final" type="finalpoint" x="3719" y="177"/>
+  <object id="40" name="flag" type="flag" x="3608" y="40">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "de7d7207-74c8-4a7b-b3b9-5e9a58bcd811",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "batteryBoom2": {
+      "ver": "1.0.3",
+      "uuid": "ab456b4c-40c8-4edb-943b-94fb03fa978e",
+      "rawTextureUuid": "de7d7207-74c8-4a7b-b3b9-5e9a58bcd811",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 32,
+      "height": 18,
+      "rawWidth": 32,
+      "rawHeight": 18,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

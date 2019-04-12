@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "b9fdea91-82ad-444f-9927-7e6fbd747b48",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "tortoise_home_02": {
+      "ver": "1.0.3",
+      "uuid": "da03561b-9b7b-4ab0-90e2-5b2d38a81282",
+      "rawTextureUuid": "b9fdea91-82ad-444f-9927-7e6fbd747b48",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 18,
+      "height": 16,
+      "rawWidth": 18,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

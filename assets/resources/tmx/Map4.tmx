@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="160" height="14" tilewidth="16" tileheight="16" infinite="0" nextobjectid="17">
+ <tileset firstgid="1" name="superMarioMap" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="900" columns="30">
+  <image source="superMarioMap.png" width="511" height="511"/>
+  <tile id="0">
+   <properties>
+    <property name="blockType" value="2"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="collisionType" type="int" value="10"/>
+   </properties>
+  </tile>
+  <tile id="244">
+   <properties>
+    <property name="collisionType" type="int" value="4"/>
+   </properties>
+  </tile>
+  <tile id="276">
+   <properties>
+    <property name="collisionType" type="int" value="0"/>
+   </properties>
+  </tile>
+  <tile id="600">
+   <properties>
+    <property name="blockType" value="1"/>
+    <property name="collisionType" type="int" value="9"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="background" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztwwEJAAAMA6DBC65/muU4KNhLqqqqqqqqqqqqTw/+Y9Zf
+  </data>
+ </layer>
+ <layer name="scenery" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0jEKgDAQBMAEn+DH/LNvCloqqGARi4h6hTOwzcKFI1xK7xm6th4AAAAAgBjTmjl6CX5tzNEbQKyyByL0eUuL2s2Wi55vlJuJduf+ajNH1/oWzzj/f0uetABUdhk/
+  </data>
+ </layer>
+ <layer name="flagpole" width="160" height="14" visible="0">
+  <properties>
+   <property name="isColliding" type="bool" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7CDBe2fxhgqbAmWAAAAAABXdG0PAAAA4J8BGjgAVA==
+  </data>
+ </layer>
+ <layer name="noCoinBlock" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7A3s38rUxxBtgRLAAAA/prrAAAAAAAAdQuQPwBA
+  </data>
+ </layer>
+ <layer name="coinBlock" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6Cbwf5dbaGbgwQkAAAAAAAAAAD7uq4HfDFQ7wAV
+  </data>
+ </layer>
+ <layer name="land" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztl1sKgCAQRY0+XIcLa5u1gDYW/YVI89BxtO6BC0Fit+YQFQIAfqwI4pjNMBos+1jcA7WGc771M5Rcp3YvS+AfTao8D/9s6NWNmi93rWSfvzODf5gn4BAfAaA3McBB4Efun5eDpR4jJKf2f2P275JzaeuKdiZ5D+4c7+NU6O7t2aiRQD33PLsiR0U/bmdr/0rdvec8aiRI/dPwhfcf/IN/b73g3z+iQTp3q97wb/5oaO3fBfhdXa8=
+  </data>
+ </layer>
+ <layer name="prop" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzgEJAAAIA7BjTfv3MIUIsiVYAgAA8FfX9QAAAAAAgG0DJdIAXg==
+  </data>
+ </layer>
+ <layer name="pipe" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJztzkEJAAAIBLAD+9r/aQwVtgRL7ujaHgAAAAAAAAAA8M0AWRIAcg==
+  </data>
+ </layer>
+ <layer name="coin" width="160" height="14">
+  <properties>
+   <property name="isColliding" type="bool" value="true"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt1LEKACAIBcDo/9f+NxqiBoOGioY7EOS5qikBAAArJd+dA8zaz3hdwBDdhVvhhXnHeh9lcFq0W7sZAAD8pgJQSRle
+  </data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="9" name="player1" type="player" x="32" y="80" width="14" height="16"/>
+  <object id="1" name="fire_string" type="monster" x="360" y="88">
+   <properties>
+    <property name="begAngle" value="90"/>
+    <property name="time" value="4"/>
+   </properties>
+  </object>
+  <object id="2" name="fire_string" type="monster" x="472" y="152">
+   <properties>
+    <property name="begAngle" value="0"/>
+    <property name="time" value="2"/>
+   </properties>
+  </object>
+  <object id="3" name="fire_string" type="monster" x="776" y="72">
+   <properties>
+    <property name="begAngle" value="180"/>
+    <property name="time" value="4"/>
+   </properties>
+  </object>
+  <object id="4" name="fire_string" type="monster" x="952" y="72">
+   <properties>
+    <property name="begAngle" value="90"/>
+    <property name="time" value="2"/>
+   </properties>
+  </object>
+  <object id="5" name="fire_string" type="monster" x="1064" y="72">
+   <properties>
+    <property name="begAngle" value="270"/>
+    <property name="time" value="4"/>
+   </properties>
+  </object>
+  <object id="6" name="fire_string" type="monster" x="1224" y="136">
+   <properties>
+    <property name="begAngle" value="90"/>
+    <property name="time" value="4"/>
+   </properties>
+  </object>
+  <object id="7" name="fire_string" type="monster" x="1352" y="136">
+   <properties>
+    <property name="begAngle" value="270"/>
+    <property name="time" value="3"/>
+   </properties>
+  </object>
+  <object id="8" name="fire_string" type="monster" x="1480" y="136">
+   <properties>
+    <property name="begAngle" value="300"/>
+    <property name="time" value="4"/>
+   </properties>
+  </object>
+  <object id="10" name="mushroom" type="prop" x="471" y="71"/>
+  <object id="11" name="boss" type="boss" x="2160" y="128"/>
+  <object id="12" name="final" type="finalpoint" x="2448" y="176"/>
+  <object id="13" name="fuzi" type="flagpoint" x="2232" y="126"/>
+  <object id="14" name="others" type="bridgestartpos" x="2032" y="144"/>
+  <object id="15" name="fire_string" type="monster" x="1288" y="56">
+   <point/>
+  </object>
+  <object id="16" name="fire_string" type="monster" x="1416" y="56">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,65 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "flower",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.6333333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "433e8b9c-be76-4ab8-9ebe-40962c2a82ac"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "dcce30f9-6e09-479a-891c-2d237df606bf"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "433e8b9c-be76-4ab8-9ebe-40962c2a82ac"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "dcce30f9-6e09-479a-891c-2d237df606bf"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "433e8b9c-be76-4ab8-9ebe-40962c2a82ac"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": 25
+        },
+        {
+          "frame": 1.6333333333333333,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": []
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "50a4d14e-6036-41f5-bfd8-28a930b85b57",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "blinkcoin_09": {
+      "ver": "1.0.3",
+      "uuid": "20acb735-3b1f-4a06-9540-8f14886f2bbb",
+      "rawTextureUuid": "50a4d14e-6036-41f5-bfd8-28a930b85b57",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 10,
+      "height": 14,
+      "rawWidth": 10,
+      "rawHeight": 14,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "player1_big_die",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1.0166666666666666,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "bec14b2a-ddec-4b2f-9371-5f1e4eb8ede4"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "18ebae63-7de4-4f05-aeb1-cad17326e8b9"
+            }
+          },
+          {
+            "frame": 0.3333333333333333,
+            "value": {
+              "__uuid__": "704560f7-727e-44d0-ad26-8cab382ba532"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "7e16a404-1c37-4c9b-9d26-43e2f55752d9"
+            }
+          },
+          {
+            "frame": 0.6666666666666666,
+            "value": {
+              "__uuid__": "184b95b4-199c-45f4-b672-2128b7fa6dfa"
+            }
+          },
+          {
+            "frame": 0.8333333333333334,
+            "value": {
+              "__uuid__": "a01efea7-c86b-45ac-b3b3-84fe9461742f"
+            }
+          },
+          {
+            "frame": 1,
+            "value": {
+              "__uuid__": "04de37c1-194f-4cec-a665-fe248c140ae3"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "y": [
+        {
+          "frame": 0,
+          "value": 0
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": 40
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": 60
+        },
+        {
+          "frame": 0.5,
+          "value": 30
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": 0
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": -30
+        },
+        {
+          "frame": 1,
+          "value": -60
+        }
+      ]
+    }
+  },
+  "events": []
+}

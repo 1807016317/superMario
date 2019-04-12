@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "bda7393e-1e74-4c0a-a6de-30b32cd95356",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "shanshuode_coin_03": {
+      "ver": "1.0.3",
+      "uuid": "4b430f06-b7ec-4eb5-8e94-9c47f2dbfe7d",
+      "rawTextureUuid": "bda7393e-1e74-4c0a-a6de-30b32cd95356",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 16,
+      "height": 16,
+      "rawWidth": 16,
+      "rawHeight": 16,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
