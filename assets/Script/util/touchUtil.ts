@@ -2,6 +2,7 @@ import dataConst from "../data/dataConst";
 import myApp from "../myApp";
 import EventManager from "../manager/EventManager";
 import UIUtil from "./uiUtil";
+import EventConst from "../data/EventConst";
 
 /********************
  * @Name：btnUtil
@@ -20,19 +21,41 @@ export default class btnUtil extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
     private _player1Control: any = null;
+    private _touchState: Array<boolean> = [];
 
     // onLoad () {}
 
     onEnable() {
-        this.touchNode[0].on(cc.Node.EventType.TOUCH_START, this.dirUp, this);//上
-        this.touchNode[1].on(cc.Node.EventType.TOUCH_START, this.dirDown, this);//下
-        this.touchNode[2].on(cc.Node.EventType.TOUCH_START, this.dirLeft, this);//左
-        this.touchNode[3].on(cc.Node.EventType.TOUCH_START, this.dirRight, this);//右
-        this.touchNode[4].on(cc.Node.EventType.TOUCH_START, this.btnA, this);//A
-        this.touchNode[5].on(cc.Node.EventType.TOUCH_START, this.btnB, this);//B
+        this.onTouchStart(this.touchNode[0], 0, this.dirUp, this);//上
+        this.onTouchStart(this.touchNode[1], 1, this.dirDown, this);//下
+        this.onTouchStart(this.touchNode[2], 2, this.dirLeft, this);//左
+        this.onTouchStart(this.touchNode[3], 3, this.dirRight, this);//右
+        this.onTouchStart(this.touchNode[4], 4, this.btnA, this);//A
+        this.onTouchStart(this.touchNode[5], 5, this.btnB, this);//B
 
-        this.node.on(cc.Node.EventType.TOUCH_END, this.changePlayerState, this, true);
-        this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.changePlayerState, this, true);
+        this.touchEnd();
+
+        //this.node.on(cc.Node.EventType.TOUCH_END, this.changePlayerState, this, true);
+        //this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.changePlayerState, this, true);
+    }
+
+    touchEnd() {
+        this.onTouchEnd(this.touchNode[0], this.changePlayerState, this, true);//上
+        this.onTouchEnd(this.touchNode[1], this.changePlayerState, this, true);//下
+        this.onTouchEnd(this.touchNode[2], this.changePlayerState, this, true);//左
+        this.onTouchEnd(this.touchNode[3], this.changePlayerState, this, true);//右
+        this.onTouchEnd(this.touchNode[4], this.changePlayerState, this, true);//A
+        this.onTouchEnd(this.touchNode[5], this.changePlayerState, this, true);//B
+    }
+
+    onTouchStart(node: cc.Node, index, callBack: (event: cc.Event.EventCustom) => void, target?: any, useCapture?: boolean) {
+        this._touchState[node.name] = false;
+        node.on(cc.Node.EventType.TOUCH_START, callBack, target, useCapture);
+    }
+
+    onTouchEnd(node: cc.Node, callBack: (event: cc.Event.EventCustom) => void, target?: any, useCapture?: boolean) {
+        node.on(cc.Node.EventType.TOUCH_END, callBack, target, useCapture);
+        node.on(cc.Node.EventType.TOUCH_CANCEL, callBack, target, useCapture);
     }
 
     start() {
@@ -47,9 +70,10 @@ export default class btnUtil extends cc.Component {
         UIUtil.loadGM();
     }
 
-    changePlayerState() {
-        this._player1Control.moveState_1 = dataConst.STOP;
-        console.log(this._player1Control.moveState_1);
+    changePlayerState(event) {
+        this._touchState[event.currentTarget.name] = false;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.STOP;
+        this._player1Control.direction_1 = dataConst.DIR.NONE;
     }
 
     gamePause() {
@@ -67,48 +91,60 @@ export default class btnUtil extends cc.Component {
         cc.game.restart();
     }
 
-    dirUp() {
-        if (this._player1Control.isJump == true) {
+    dirUp(event) {
+        if (this._player1Control.isJump == true || this._player1Control.direction_1 == dataConst.DIR.DOWN) {
             return;
         }
         this._player1Control.isJump = true;
-        this._player1Control.direction_1 = dataConst.UP;
-        this._player1Control.moveState_1 = dataConst.MOVE;
-        console.log(this._player1Control.moveState_1);
+        //this._player1Control.direction_1 = dataConst.DIR.UP;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
     }
 
-    dirDown() {
+    dirDown(event) {
         //this._player1Control.direction_1 = dataConst.DOWN;
-        this._player1Control.moveState_1 = dataConst.MOVE;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
 
     }
 
-    dirLeft() {
-        this._player1Control.direction_1 = dataConst.LEFT;
-        this._player1Control.moveState_1 = dataConst.MOVE;
+    dirLeft(event) {
+        this._touchState[event.currentTarget.name] = true;
+        this._player1Control.direction_1 = dataConst.DIR.LEFT;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
+        EventManager.getInstance().emit(EventConst.ANIMATION_PLAY);
     }
 
-    dirRight() {
-        this._player1Control.direction_1 = dataConst.RIGHT;
-        this._player1Control.moveState_1 = dataConst.MOVE;
+    dirRight(event) {
+        this._touchState[event.currentTarget.name] = true;
+        this._player1Control.direction_1 = dataConst.DIR.RIGHT;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
+        EventManager.getInstance().emit(EventConst.ANIMATION_PLAY);
     }
 
-    btnA() {
+    btnA(event) {
         //攻击
-        if (this._player1Control.state_1 == dataConst.COMBATABLE) {
+        if (this._player1Control.state_1 == dataConst.BODYSTATE.COMBATABLE) {
 
         }
     }
 
-    btnB() {
+    btnB(event) {
         //跳跃
-        if (this._player1Control.isJump == true) {
+        if (this._player1Control.isJump == true || this._player1Control.direction_1 == dataConst.DIR.DOWN) {
             return;
         }
         this._player1Control.isJump = true;
-        this._player1Control.direction_1 = dataConst.UP;
-        this._player1Control.moveState_1 = dataConst.MOVE;
+        //this._player1Control.direction_1 = dataConst.DIR.UP;
+        this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
     }
 
-    // update (dt) {}
+    update () {
+        if(this._touchState["dir_left"]) {
+            this._player1Control.direction_1 = dataConst.DIR.LEFT;
+            this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
+        }
+        if(this._touchState["dir_right"]) {
+            this._player1Control.direction_1 = dataConst.DIR.RIGHT;
+            this._player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
+        }
+    }
 }

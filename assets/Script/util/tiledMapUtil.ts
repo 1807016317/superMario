@@ -30,13 +30,16 @@ export default class tiledMapUtil extends cc.Component {
 
     onEnable() {
         EventManager.getInstance().on(EventConst.CHANGE_MAP, this.changeMap.bind(this));
+        EventManager.getInstance().on(EventConst.CHECK_COLLSION, this.checkGIDAt.bind(this));
     }
 
     onDisable() {
         EventManager.getInstance().off(EventConst.CHANGE_MAP);
+        EventManager.getInstance().off(EventConst.CHECK_COLLSION);
     }
 
     start() {
+        this.updateSize();
         this.setPlayerFollow();
     }
 
@@ -63,12 +66,18 @@ export default class tiledMapUtil extends cc.Component {
                 EventManager.getInstance().emit(EventConst.UPDATE_UI);
                 UIUtil.loaderRes(mapData.data[myApp.getInstance().checkNum].name, cc.TiledMapAsset, (mapAsset) => {
                     this._curMap.tmxAsset = mapAsset;
+                    this.updateSize();
                 })
                 let objectGroups = this._curMap.getObjectGroups();
                 let player1_Obj = objectGroups[0].getObject("player1");
                 player1.setPosition(player1_Obj.x, player1_Obj.y);
             }
         }
+    }
+
+    updateSize() {
+        myApp.getInstance().mapSize = this._curMap.getMapSize();
+        myApp.getInstance().tileSize = this._curMap.getTileSize();
     }
 
     /**
@@ -81,45 +90,45 @@ export default class tiledMapUtil extends cc.Component {
         }
         let player1_box = player1.getBoundingBox();
         let box_center = player1_box.center;
-        let box_origin = cc.v2(player1_box.origin.x, player1_box.origin.y);
         //从上下左右四个方向来判断是否产生碰撞
         let box_top = cc.v2(box_center.x, box_center.y + player1_box.height / 2);
-        let box_bottom = cc.v2(box_center.x, box_center.y - player1_box.height / 2);
+        let box_bottom = cc.v2(box_center.x, box_center.y - player1_box.height);
         let box_left = cc.v2(box_center.x - player1_box.width / 2, box_center.y);
         let box_right = cc.v2(box_center.x + player1_box.width / 2, box_center.y);
-        this.checkGIDAt(box_top, box_origin, dataConst.UP);
-        this.checkGIDAt(box_bottom, box_origin, dataConst.DOWN);
-        this.checkGIDAt(box_left, box_origin, dataConst.LEFT);
-        this.checkGIDAt(box_right, box_origin, dataConst.RIGHT);
+        this.checkGIDAt(box_top, dataConst.DIR.UP);
+        this.checkGIDAt(box_bottom, dataConst.DIR.DOWN);
+        this.checkGIDAt(box_left, dataConst.DIR.LEFT);
+        this.checkGIDAt(box_right, dataConst.DIR.RIGHT);
     }
 
     /**
      * 获取当前坐标的坐标
      */
-    checkGIDAt(pos: cc.Vec2, box_origin, dir) {
-        if (pos.x < 0 || pos.y < 0) {
-            EventManager.getInstance().emit(EventConst.LISTEN_COLLSION, box_origin);
+    checkGIDAt(pos: cc.Vec2, dir) {
+        let vec = this.toTilesPos(pos);
+        if (vec.x < 0 || vec.y < 0) {
+            //EventManager.getInstance().emit(EventConst.LISTEN_COLLSION);
             return;
         }
 
-        let vec = this.toTilesPos(pos);
+        let player_origin = this.toViewPos(vec);
         for (const key in this._allLayers) {
             let properties = this._allLayers[key].getProperties();
             if (properties["isColliding"]) {
+                //console.log("vec=============" + vec);
                 let tileGid = this._allLayers[key].getTileGIDAt(vec);
                 if (tileGid != 0) {
                     //gid不等于0时，是碰撞到了，返回真
-                    EventManager.getInstance().emit(EventConst.LISTEN_COLLSION, box_origin);
-                } else {
-                    let player1: cc.Node = myApp.getInstance().player1Node;
-                    let player1Control = player1.getComponent("player1Control");
-                    if (dir === dataConst.DOWN && !player1Control.isJump) {
-                        player1Control.direction_1 = dataConst.DOWN;
-                        player1Control.moveState_1 = dataConst.MOVE;
-                        //EventManager.getInstance().emit(EventConst.PLAYER_FALL);
-                    }
+                    EventManager.getInstance().emit(EventConst.LISTEN_COLLSION, player_origin, dir);
+                    return;
                 }
             }
+        }
+        let player1: cc.Node = myApp.getInstance().player1Node;
+        let player1Control = player1.getComponent("player1Control");
+        if (dir === dataConst.DIR.DOWN && !player1Control.isJump) {
+            player1Control.direction_1 = dataConst.DIR.DOWN;
+            //player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
         }
     }
 
@@ -131,6 +140,21 @@ export default class tiledMapUtil extends cc.Component {
         let tileSize = this._curMap.getTileSize();
         let y = mapSize.height - Math.floor(pos.y / tileSize.height) - 1;
         let x = Math.floor(pos.x / tileSize.width);
+        if (y >= mapSize.height) {
+            EventManager.getInstance().emit(EventConst.GAMEOVER);
+            return cc.v2(x, mapSize.height - 1);
+        }
+        return cc.v2(x, y);
+    }
+
+    /**
+     * 将TiledMap坐标转换为屏幕的坐标
+     */
+    toViewPos(pos: cc.Vec2) {
+        let mapSize = this._curMap.getMapSize();
+        let tileSize = this._curMap.getTileSize();
+        let x = pos.x * tileSize.width + tileSize.width / 2;
+        let y = (mapSize.height - pos.y) * tileSize.height + tileSize.height / 2;
         return cc.v2(x, y);
     }
 

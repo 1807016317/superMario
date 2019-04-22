@@ -151,7 +151,7 @@
 </data>
  </layer>
  <objectgroup draworder="index" name="objects">
-  <object id="10" name="player1" type="player" x="40" y="104"/>
+  <object id="10" name="player1" type="player" x="40" y="184"/>
   <object id="11" name="mushroom" type="prop" x="336" y="112" width="16" height="16"/>
   <object id="33" name="final" type="finalPoint" x="3533" y="160" width="22" height="33"/>
   <object id="55" name="flag" type="flag" x="3416" y="40">

@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.359375,
-      "y": 0.359375,
+      "x": 0.36961805555555555,
+      "y": 0.36961805555555555,
       "z": 1
     },
     "_quat": {
@@ -140,7 +140,7 @@
     },
     "_children": [],
     "_active": true,
-    "_level": 1,
+    "_level": 0,
     "_components": [
       {
         "__id__": 4
@@ -201,7 +201,7 @@
     },
     "_enabled": true,
     "_cullingMask": 4294967295,
-    "_clearFlags": 7,
+    "_clearFlags": 6,
     "_backgroundColor": {
       "__type__": "cc.Color",
       "r": 0,
@@ -209,10 +209,10 @@
       "b": 0,
       "a": 255
     },
-    "_depth": -1,
+    "_depth": 0,
     "_zoomRatio": 1,
     "_targetTexture": null,
-    "_id": "559D+2LXtDjLMniySpcR4/"
+    "_id": "731tid+S1GhL+D//C67o+c"
   },
   {
     "__type__": "cc.Node",
@@ -233,7 +233,7 @@
       }
     ],
     "_active": true,
-    "_level": 0,
+    "_level": 1,
     "_components": [
       {
         "__id__": 23
@@ -381,7 +381,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "84/vyET8VGd6TAGUxMuCTS"
+    "_id": "74EADu0jhNP6iMaHQ8pQXK"
   },
   {
     "__type__": "cc.Widget",
@@ -408,7 +408,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 540,
     "_originalHeight": 269,
-    "_id": "af4MKTbU9K64PX/hmxKUc+"
+    "_id": "88rms9JndErLRk88np+YKJ"
   },
   {
     "__type__": "cc.Node",
@@ -573,7 +573,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 16,
-      "height": 18
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -618,7 +618,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "53e4fc10-8965-4d44-8cbf-4ec93a29f89a"
+      "__uuid__": "f3df907e-2527-4997-9f8e-78412e485a35"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -633,7 +633,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "92q0/qE19NwIFn9f0gBlLK"
+    "_id": "1anNcy3E1DCI2XOeGWfO12"
   },
   {
     "__type__": "cc.Label",
@@ -656,11 +656,12 @@
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
+    "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "33IfcWF+tA7YPTOgTkKO6D"
+    "_id": "917+ssEJ9M9717Jn8SA2tV"
   },
   {
     "__type__": "cc.Node",
@@ -754,7 +755,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 16,
-      "height": 18
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -799,7 +800,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "53e4fc10-8965-4d44-8cbf-4ec93a29f89a"
+      "__uuid__": "41f93811-9bff-4f77-ab96-302fe9f43e60"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -814,7 +815,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "afwWHtEHBNeanmc/advqpP"
+    "_id": "02rIKAYZ9FULkFCFAQooUU"
   },
   {
     "__type__": "cc.Label",
@@ -837,11 +838,12 @@
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
+    "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "05JbEEmzxEG4yZcwOAudhV"
+    "_id": "bdm8I9FpVHsqouQXnl3Eln"
   },
   {
     "__type__": "cc.Layout",
@@ -873,7 +875,8 @@
     "_N$spacingY": 20,
     "_N$verticalDirection": 1,
     "_N$horizontalDirection": 0,
-    "_id": "40rOHKiFZFwYYuoiiSf7WU"
+    "_N$affectedByScale": false,
+    "_id": "01ZEva20xJh7OtUA/6uYfH"
   },
   {
     "__type__": "cc.Widget",
@@ -900,7 +903,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 69,
-    "_id": "24YkF6+4VPc7o9icAJ+017"
+    "_id": "d0Ps7xR+pLerjX7VVwQd0U"
   },
   {
     "__type__": "cc.Node",
@@ -987,11 +990,12 @@
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
+    "_batchAsBitmap": false,
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
     "_N$overflow": 0,
-    "_id": "65xBbNhxdOsYA2cgc8LGKc"
+    "_id": "131JwQ+l9LlLxzLsjiUOa/"
   },
   {
     "__type__": "cc.Widget",
@@ -1018,7 +1022,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 220,
     "_originalHeight": 40,
-    "_id": "07mmjgWglJuIr6sYXN5YeS"
+    "_id": "baATrKloVPiZTnzH+DPXny"
   },
   {
     "__type__": "cc.Sprite",
@@ -1046,7 +1050,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "f63T7q5MVOTK9ySwoiXArd"
+    "_id": "ec8z/vYltISKatFNKDx9mq"
   },
   {
     "__type__": "cc.Widget",
@@ -1056,7 +1060,7 @@
       "__id__": 5
     },
     "_enabled": true,
-    "alignMode": 1,
+    "alignMode": 2,
     "_target": null,
     "_alignFlags": 45,
     "_left": 0,
@@ -1073,7 +1077,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 644,
     "_originalHeight": 485,
-    "_id": "bfJjZGbQJPhqUYANdUJFsC"
+    "_id": "81RbALDixAErouc9yu1huw"
   },
   {
     "__type__": "60d07pAKrdKfIKo2oCkdmCl",
@@ -1097,7 +1101,7 @@
     "audioManager": {
       "__id__": 26
     },
-    "_id": "8bHgS0/3BKCqDGGEwrH7SD"
+    "_id": "157bGPb7NGA75JAnez52FP"
   },
   {
     "__type__": "cc.Node",
@@ -1108,7 +1112,7 @@
     },
     "_children": [],
     "_active": true,
-    "_level": 1,
+    "_level": 0,
     "_components": [
       {
         "__id__": 27
@@ -1173,7 +1177,7 @@
       "__id__": 26
     },
     "_enabled": true,
-    "audio": [
+    "audioClip": [
       {
         "__uuid__": "08b0027e-943d-45ec-89d6-51c901bc0cc8"
       },
@@ -1202,7 +1206,10 @@
         "__uuid__": "9abfa5de-e701-4e8e-a267-3d0c9d43f235"
       }
     ],
-    "_id": "81j+gOn7dGiKOdDxU43eYi"
+    "audioSource": {
+      "__id__": 28
+    },
+    "_id": "b8O7HgsTZIw6M7jxmRMPh+"
   },
   {
     "__type__": "cc.AudioSource",
@@ -1212,15 +1219,13 @@
       "__id__": 26
     },
     "_enabled": true,
-    "_clip": {
-      "__uuid__": "08b0027e-943d-45ec-89d6-51c901bc0cc8"
-    },
+    "_clip": null,
     "_volume": 1,
     "_mute": false,
     "_loop": true,
     "playOnLoad": false,
     "preload": false,
-    "_id": "6fsZPyYdBOcYFLzsaWQkdg"
+    "_id": "c9uV61IclGsKa0RnPj7p5z"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -1255,7 +1260,7 @@
       }
     ],
     "_active": true,
-    "_level": 0,
+    "_level": 1,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -1278,7 +1283,7 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -1.1368683772161603e-13,
       "y": 0,
       "z": 0
     },
@@ -1345,14 +1350,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -100,
-      "y": -280,
+      "x": -100.00000000000001,
+      "y": -275.15,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.3,
+      "y": 1.3,
       "z": 1
     },
     "_rotationX": 0,
@@ -1396,7 +1401,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "78x7ITr0lA9bxXILPq7Ki6"
+    "_id": "3ecI2yukNI/IQ6Dtb8Ks6A"
   },
   {
     "__type__": "cc.Widget",
@@ -1409,10 +1414,10 @@
     "alignMode": 1,
     "_target": null,
     "_alignFlags": 12,
-    "_left": -158.5,
+    "_left": -176.05,
     "_right": 0,
     "_top": 0,
-    "_bottom": -299.5,
+    "_bottom": -300.5,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
     "_isAbsLeft": true,
@@ -1423,7 +1428,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 0,
-    "_id": "20/h3Wuh5HwpXUN+VfqkO4"
+    "_id": "9d0KOvGSJHAaCHGwVzKe0E"
   },
   {
     "__type__": "cc.Button",
@@ -1433,21 +1438,6 @@
       "__id__": 31
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -1457,11 +1447,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -1480,14 +1500,15 @@
     "_N$target": {
       "__id__": 31
     },
-    "_id": "e1O2C8uhVAX7OxBYdGqj/y"
+    "_id": "edPn7fEmBNQayrBE+OZ7ZB"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "changeScene",
     "customEventData": ""
   },
@@ -1533,14 +1554,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 100,
-      "y": -280,
+      "x": 100.00000000000001,
+      "y": -274.3,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.3,
+      "y": 1.3,
       "z": 1
     },
     "_rotationX": 0,
@@ -1584,7 +1605,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "bdm1APF7BDMbA2UDsSHlyj"
+    "_id": "6avBl4V11JyLVot3NOpUHc"
   },
   {
     "__type__": "cc.Widget",
@@ -1598,7 +1619,7 @@
     "_target": null,
     "_alignFlags": 36,
     "_left": 0,
-    "_right": -158.5,
+    "_right": -176.05,
     "_top": 0,
     "_bottom": -299,
     "_verticalCenter": 0,
@@ -1611,7 +1632,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 0,
-    "_id": "81KE1APgdJL4Z1tixOWvd9"
+    "_id": "95e1H/wH9OjbpNBpoQR55Y"
   },
   {
     "__type__": "cc.Button",
@@ -1621,21 +1642,6 @@
       "__id__": 36
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -1645,11 +1651,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -1668,14 +1704,15 @@
     "_N$target": {
       "__id__": 36
     },
-    "_id": "0a0oBLkqFEtZEJ0FDx7HFM"
+    "_id": "bdXnYtsyxI76g/g+zz5yvh"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "btnDir",
     "customEventData": ""
   },
@@ -1792,14 +1829,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -60,
+      "x": -100,
       "y": 0,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
+      "x": 0.8,
+      "y": 0.8,
       "z": 1
     },
     "_rotationX": 0,
@@ -1843,7 +1880,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "07GtMmC+BGw5KumPHq34M0"
+    "_id": "8cDUe1tf5DWozGu4/QvrM8"
   },
   {
     "__type__": "cc.Button",
@@ -1853,21 +1890,6 @@
       "__id__": 42
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -1877,11 +1899,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -1900,14 +1952,15 @@
     "_N$target": {
       "__id__": 42
     },
-    "_id": "d1py/v2cZBA55s2UQy5V90"
+    "_id": "d3lvImNzJGUKmzHmFGpgsD"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "btnDir",
     "customEventData": ""
   },
@@ -1950,14 +2003,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 60,
+      "x": 100,
       "y": 0,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
+      "x": 0.8,
+      "y": 0.8,
       "z": 1
     },
     "_rotationX": 180,
@@ -2001,7 +2054,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "dceuH/clNDjYPql1t4KfN3"
+    "_id": "7d1unaCwFL2rEWuyaKxCXB"
   },
   {
     "__type__": "cc.Button",
@@ -2011,21 +2064,6 @@
       "__id__": 46
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -2035,11 +2073,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -2058,14 +2126,15 @@
     "_N$target": {
       "__id__": 46
     },
-    "_id": "d66Yv9bZBE2axt548YNaMl"
+    "_id": "ec/AZeqfFINKosz2glUVWm"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "btnDir",
     "customEventData": ""
   },
@@ -2109,23 +2178,23 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 60,
+      "y": 100,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
+      "x": 0.8,
+      "y": 0.8,
       "z": 1
     },
-    "_rotationX": 90,
-    "_rotationY": 90,
+    "_rotationX": 89.99999999999999,
+    "_rotationY": 89.99999999999999,
     "_quat": {
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
       "z": -0.7071067811865475,
-      "w": 0.7071067811865476
+      "w": 0.7071067811865477
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2159,7 +2228,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "50WerRfyFAdJX6m1Wx3lty"
+    "_id": "2aZbBbQBBLv5qLCtWmENFt"
   },
   {
     "__type__": "cc.Button",
@@ -2169,21 +2238,6 @@
       "__id__": 50
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -2193,11 +2247,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -2216,14 +2300,15 @@
     "_N$target": {
       "__id__": 50
     },
-    "_id": "a2E04bO9BGiKbmCem35l1H"
+    "_id": "53ZRkelv1KQ7bFdsr7tCel"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "btnDir",
     "customEventData": ""
   },
@@ -2267,23 +2352,23 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -60,
+      "y": -100,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
+      "x": 0.8,
+      "y": 0.8,
       "z": 1
     },
-    "_rotationX": -90,
-    "_rotationY": -90,
+    "_rotationX": -89.99999999999999,
+    "_rotationY": -89.99999999999999,
     "_quat": {
       "__type__": "cc.Quat",
       "x": 0,
       "y": 0,
       "z": 0.7071067811865475,
-      "w": 0.7071067811865476
+      "w": 0.7071067811865477
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2317,7 +2402,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "b9uWq8E6pIs6QQ5FrpanCY"
+    "_id": "8dsMGdBCVBw5pLM7LL5ma3"
   },
   {
     "__type__": "cc.Button",
@@ -2327,21 +2412,6 @@
       "__id__": 54
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -2351,11 +2421,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -2374,14 +2474,15 @@
     "_N$target": {
       "__id__": 54
     },
-    "_id": "7bZ/p+eBVJ47ceVYVZoegn"
+    "_id": "e4cxTnQ+FNyprjGIbnSZLT"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "btnDir",
     "customEventData": ""
   },
@@ -2410,7 +2511,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 0,
-    "_id": "571CP0ezFHI6cdVyMYwbW4"
+    "_id": "5d/Y752P9PMYahWZXBYTNM"
   },
   {
     "__type__": "cc.Node",
@@ -2520,13 +2621,13 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 50,
+      "y": 100,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
+      "x": 0.8,
+      "y": 0.8,
       "z": 1
     },
     "_rotationX": 0,
@@ -2570,7 +2671,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "acZcxX6sBMnqg7RUVUZP+5"
+    "_id": "2eiD74q5tLeqCx94EGZLb1"
   },
   {
     "__type__": "cc.Button",
@@ -2580,7 +2681,27 @@
       "__id__": 60
     },
     "_enabled": true,
+    "duration": 0.1,
+    "zoomScale": 1.2,
+    "clickEvents": [],
+    "_N$interactable": true,
+    "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
     "transition": 3,
+    "_N$normalColor": {
+      "__type__": "cc.Color",
+      "r": 214,
+      "g": 214,
+      "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
     "pressedColor": {
       "__type__": "cc.Color",
       "r": 211,
@@ -2588,23 +2709,18 @@
       "b": 211,
       "a": 255
     },
-    "hoverColor": {
+    "_N$hoverColor": {
       "__type__": "cc.Color",
       "r": 255,
       "g": 255,
       "b": 255,
       "a": 255
     },
-    "duration": 0.1,
-    "zoomScale": 1.2,
-    "clickEvents": [],
-    "_N$interactable": true,
-    "_N$enableAutoGrayEffect": false,
-    "_N$normalColor": {
+    "hoverColor": {
       "__type__": "cc.Color",
-      "r": 214,
-      "g": 214,
-      "b": 214,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -2623,7 +2739,7 @@
     "_N$target": {
       "__id__": 60
     },
-    "_id": "4b+l5UjtFDaZZur1d560iv"
+    "_id": "3enXXZBQ1EorxXIuBnTjm+"
   },
   {
     "__type__": "cc.Node",
@@ -2670,9 +2786,9 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.6,
-      "y": 0.6,
-      "z": 1
+      "x": 0.8,
+      "y": 0.8,
+      "z": 0.6
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -2715,7 +2831,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "f4gxrMqT1GVZkA9NyOwwpE"
+    "_id": "e3BLizmuJFi4VpKap5Wy85"
   },
   {
     "__type__": "cc.Button",
@@ -2725,21 +2841,6 @@
       "__id__": 63
     },
     "_enabled": true,
-    "transition": 3,
-    "pressedColor": {
-      "__type__": "cc.Color",
-      "r": 211,
-      "g": 211,
-      "b": 211,
-      "a": 255
-    },
-    "hoverColor": {
-      "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
-      "a": 255
-    },
     "duration": 0.1,
     "zoomScale": 1.2,
     "clickEvents": [
@@ -2749,11 +2850,41 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
+    "_N$transition": 3,
+    "transition": 3,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 214,
       "g": 214,
       "b": 214,
+      "a": 255
+    },
+    "_N$pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "pressedColor": {
+      "__type__": "cc.Color",
+      "r": 211,
+      "g": 211,
+      "b": 211,
+      "a": 255
+    },
+    "_N$hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "hoverColor": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$disabledColor": {
@@ -2772,14 +2903,15 @@
     "_N$target": {
       "__id__": 63
     },
-    "_id": "91Y5DCVkhLPaCVfaWKQw3E"
+    "_id": "42it2QbvxFLaSr1R7JL7Km"
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
       "__id__": 5
     },
-    "component": "menu_scene",
+    "component": "",
+    "_componentId": "60d07pAKrdKfIKo2oCkdmCl",
     "handler": "exitGame",
     "customEventData": ""
   },
@@ -2791,7 +2923,7 @@
       "__id__": 59
     },
     "_enabled": true,
-    "alignMode": 1,
+    "alignMode": 2,
     "_target": null,
     "_alignFlags": 36,
     "_left": 0,
@@ -2808,7 +2940,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 0,
     "_originalHeight": 0,
-    "_id": "bdlakRCiBE27HFKcL3rLGC"
+    "_id": "e4v5PBuHRA8ZjM2qLxmHRf"
   },
   {
     "__type__": "cc.Canvas",
@@ -2825,6 +2957,6 @@
     },
     "_fitWidth": false,
     "_fitHeight": true,
-    "_id": "1cW6qKuwtNBb/5QNTAImaK"
+    "_id": "8f5s9EO8tJV56mr81FK/SX"
   }
 ]

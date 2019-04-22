@@ -17,6 +17,8 @@ export default class myApp {
     private _player2Node: cc.Node = null;
     private _fixScale: number = null;
     private _moveSpeed: number = 1.5;
+    private _mapSize: cc.Size = null;
+    private _tileSize: cc.Size = null;
 
     public static getInstance(): myApp {
         if (this._instance == null) {
@@ -87,6 +89,20 @@ export default class myApp {
 
     public get moveSpeed(): number {
         return this._moveSpeed;
+    }
+
+    public get mapSize(): cc.Size {
+        return this._mapSize;
+    }
+    public set mapSize(value: cc.Size) {
+        this._mapSize = value;
+    }
+
+    public get tileSize(): cc.Size {
+        return this._tileSize;
+    }
+    public set tileSize(value: cc.Size) {
+        this._tileSize = value;
     }
 
 }

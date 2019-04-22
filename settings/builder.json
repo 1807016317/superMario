@@ -1,17 +1,22 @@
 {
-  "appKey": "",
-  "appSecret": "",
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
   "encryptJs": true,
-  "excludeScenes": [],
+  "excludeScenes": [
+    "69b657bb-b472-401b-95e2-e39e815417d3"
+  ],
   "fb-instant-games": {},
-  "includeAnySDK": false,
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
-  "jailbreakPlatform": false,
   "md5Cache": false,
   "mergeStartScene": false,
-  "oauthLoginServer": "",
   "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
@@ -20,13 +25,11 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.superMario",
-  "privateKey": "",
   "qqplay": {
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "renderMode": "0",
-  "startScene": "312cc276-17c2-456b-af0f-1a217b5baa76",
+  "startScene": "3c145658-2f19-4277-b84e-22f674171e41",
   "title": "superMario",
   "webOrientation": "auto",
   "wechatgame": {

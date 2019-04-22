@@ -11,7 +11,9 @@ export default class animationData {
         1002: { name: "player1_small_die" },
         1003: { name: "player1_big_walk" },
         1004: { name: "player1_big_die" },
-        1005: { name: "player1_toBig" }
+        1005: { name: "player1_toBig" },
+        1006: { name: "player1_small_jump" },
+        1007: { name: "player1_big_jump" }
     }
 
     static mushroom = {

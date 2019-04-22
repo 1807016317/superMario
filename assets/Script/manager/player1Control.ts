@@ -20,28 +20,24 @@ export default class player1Control extends cc.Component {
 
     //玩家1
     private _score_1: number = 0; //玩家1分数
-    private _dir_1: dataConst = dataConst.RIGHT;   //玩家2当前方向
-    private _moveState_1: dataConst = dataConst.STOP; //玩家2当前运动状态
-    private _state_1: dataConst = dataConst.SMALL; //玩家身体形态
+    private _dir_1: dataConst = dataConst.DIR.NONE;   //玩家2当前方向
+    private _moveState_1: dataConst = dataConst.MOVESTATE.STOP; //玩家2当前运动状态
+    private _state_1: dataConst = dataConst.BODYSTATE.SMALL; //玩家身体形态
     private _animation = null;
     private _isJump = false;
-
-    //玩家2
-    //private _score_2: number = 0; //玩家2分数
-    //private _dir_2: dataConst = dataConst.LEFT;   //玩家2当前方向
-    //private _moveState_2: dataConst = dataConst.STOP; //玩家2当前运动状态
-    //private _state_2: dataConst = dataConst.SMALL; //玩家身体形态
+    private _downSpeed = 2;
+    private _jumpSpeed = dataConst.JUMP_SPEED;
 
     onEnable() {
         this.node.on('size-changed', this.changeBoxCollider, this);
         EventManager.getInstance().on(EventConst.LISTEN_COLLSION, this.onCollisionMapLayer.bind(this));
-        EventManager.getInstance().on(EventConst.PLAYER_FALL, this.fall.bind(this));
+        EventManager.getInstance().on(EventConst.ANIMATION_PLAY, this.animationPlay.bind(this));
     }
 
     onDisable() {
         this.node.off('size-changed', this.changeBoxCollider, this);
         EventManager.getInstance().off(EventConst.LISTEN_COLLSION);
-        EventManager.getInstance().off(EventConst.PLAYER_FALL);
+        EventManager.getInstance().off(EventConst.ANIMATION_PLAY);
     }
 
     start() {
@@ -70,11 +66,8 @@ export default class player1Control extends cc.Component {
     }
 
     set moveState_1(data: dataConst) {
-        this.changeMap();
-        if (this._moveState_1 == data) {
-            return;
-        }
         this._moveState_1 = data;
+        this.changeMap();
         this.playerMove();
     }
 
@@ -105,24 +98,24 @@ export default class player1Control extends cc.Component {
     changeBoxCollider() {
         //修改碰撞体的大小
         this.node.getComponent(cc.BoxCollider).size = this.node.getContentSize();
-        if (this._state_1 == dataConst.BIG) {
-            console.log("changeBoxCollider big");
-        } else if (this._state_1 == dataConst.SMALL) {
-            console.log("changeBoxCollider small");
+        if (this._state_1 == dataConst.BODYSTATE.BIG) {
+            console.log("changeBoxCollider STATE.BIG");
+        } else if (this._state_1 == dataConst.BODYSTATE.SMALL) {
+            console.log("changeBoxCollider STATE.SMALL");
         }
     }
 
     animationPlay() {
-        if (this._moveState_1 == dataConst.STOP || !this._isJump) {
+        if (this.moveState_1 == dataConst.MOVESTATE.STOP || this._isJump) {
             this._animation.pause();
-        } else if (this._moveState_1 == dataConst.MOVE) {
-            if (UIUtil.checkDataIsNull(this._animation._currentClip)) {
-                this._animation.resume();
-                return;
-            }
-            if (this._state_1 == dataConst.BIG) {
+        } else if (this.moveState_1 == dataConst.MOVESTATE.MOVE) {
+            // if (UIUtil.checkDataIsNull(this._animation._currentClip)) {
+            //     this._animation.resume();
+            //     return;
+            // }
+            if (this._state_1 == dataConst.BODYSTATE.BIG) {
                 this._animation.play(animationData.player[1003].name);
-            } else if (this._state_1 == dataConst.SMALL) {
+            } else if (this._state_1 == dataConst.BODYSTATE.SMALL) {
                 this._animation.play(animationData.player[1001].name);
             }
         }
@@ -130,14 +123,27 @@ export default class player1Control extends cc.Component {
 
     jumpAnimate() {
         this._animation.stop();
-        if (this._state_1 == dataConst.BIG) {
-            UIUtil.loaderRes(playerImgData.data[211].name, cc.SpriteFrame, (sp) => {
+        if (this._state_1 == dataConst.BODYSTATE.BIG) {
+            this._animation.play(animationData.player[1007].name);
+        } else if (this._state_1 == dataConst.BODYSTATE.SMALL) {
+            this._animation.play(animationData.player[1006].name);
+        }
+    }
+
+    stopJumpAnimate() {
+        if (this._state_1 == dataConst.BODYSTATE.BIG) {
+            this._animation.stop(animationData.player[1007].name);
+        } else if (this._state_1 == dataConst.BODYSTATE.SMALL) {
+            this._animation.stop(animationData.player[1006].name);
+        }
+        if (this._state_1 == dataConst.BODYSTATE.BIG) {
+            UIUtil.loaderRes(playerImgData.data[201].name, cc.SpriteFrame, (sp) => {
                 if (UIUtil.checkNodeisLive(this.node)) {
                     this.node.getComponent(cc.Sprite).spriteFrame = sp;
                 }
             });
-        } else if (this._state_1 == dataConst.SMALL) {
-            UIUtil.loaderRes(playerImgData.data[111].name, cc.SpriteFrame, (sp) => {
+        } else if (this._state_1 == dataConst.BODYSTATE.SMALL) {
+            UIUtil.loaderRes(playerImgData.data[101].name, cc.SpriteFrame, (sp) => {
                 if (UIUtil.checkNodeisLive(this.node)) {
                     this.node.getComponent(cc.Sprite).spriteFrame = sp;
                 }
@@ -146,89 +152,97 @@ export default class player1Control extends cc.Component {
     }
 
     playerMove() {
-        this.unscheduleAllCallbacks();
-        if (this.moveState_1 != dataConst.MOVE) {
+        //this.unscheduleAllCallbacks();
+        if (this.moveState_1 != dataConst.MOVESTATE.MOVE) {
+            this._animation.stop();
             return;
         }
         switch (this._dir_1) {
-            case dataConst.UP:
-                this.jumpAnimate();
-                let pos = cc.v2(0, dataConst.JUMP_HIGHT);
-                let jumpUp = cc.moveBy(0.3, pos);
-                let seq = cc.sequence(jumpUp, cc.delayTime(0.1), cc.callFunc(() => {
-                    this.moveState_1 = dataConst.STOP;
-                    this._isJump = false;
-                }));
-                this.node.runAction(seq);
+            case dataConst.DIR.UP:
+                //this._isJump = true;
+                // let pos = cc.v2(0, dataConst.JUMP_HIGHT);
+                // let jumpUp = cc.moveBy(0.3, pos);
+                // let seq = cc.sequence(jumpUp, cc.delayTime(0.1), cc.callFunc(() => {
+                //     //this.moveState_1 = dataConst.MOVESTATE.STOP;
+                //     this._isJump = false;
+                // }));
+                // this.node.runAction(seq);
+                //this.schedule(this.jump.bind(this), 0);
                 break;
-            case dataConst.LEFT:
-                this.animationPlay();
-                this.schedule(() => {
-                    this.node.scaleX = -1;
-                    //this.node.x -= dataConst.MOVE_SPEED;
-                    this.node.x -= myApp.getInstance().moveSpeed;
-                }, 0);
+            case dataConst.DIR.LEFT:
+                this.node.scaleX = -1;
+                //this.node.x -= dataConst.MOVESTATE.MOVE_SPEED;
+                this.node.x -= myApp.getInstance().moveSpeed;
                 break;
-            case dataConst.RIGHT:
-                this.animationPlay();
-                this.schedule(() => {
-                    this.node.scaleX = 1;
-                    //this.node.x += dataConst.MOVE_SPEED;
-                    this.node.x += myApp.getInstance().moveSpeed;
-                }, 0);
+            case dataConst.DIR.RIGHT:
+                this.node.scaleX = 1;
+                this.node.x += myApp.getInstance().moveSpeed;
                 break;
         }
     }
 
     onCollisionStay(other, self) {
         //马里奥撞边界墙
-        this.moveState_1 = dataConst.STOP;
+        this.moveState_1 = dataConst.MOVESTATE.STOP;
         switch (this.direction_1) {
-            case dataConst.LEFT:
-                this.node.x += dataConst.MOVE_SPEED;
+            case dataConst.DIR.LEFT:
+                this.node.x += dataConst.MOVE_SPEED
                 break;
-            case dataConst.RIGHT:
+            case dataConst.DIR.RIGHT:
                 this.node.x -= dataConst.MOVE_SPEED;
                 break;
-            case dataConst.UP:
-                break;
-            default:
+            case dataConst.DIR.UP:
                 break;
         }
     }
 
-    onCollisionMapLayer(pos) {
+    onCollisionMapLayer(arg) {
         //马里奥地图内的碰撞
-        this.moveState_1 = dataConst.STOP;
-        this.node.position = pos[0];
-        switch (this.direction_1) {
-            case dataConst.LEFT:
+        //this.moveState_1 = dataConst.MOVESTATE.STOP;
+        switch (arg[1]) {
+            case dataConst.DIR.LEFT:
+                console.log("collsion left");
+                this.node.x = arg[0].x + myApp.getInstance().tileSize.height;
                 break;
-            case dataConst.RIGHT:
+            case dataConst.DIR.RIGHT:
+                console.log("collsion right");
+                this.node.x = arg[0].x - myApp.getInstance().tileSize.height;
                 break;
-            case dataConst.UP:
+            case dataConst.DIR.UP:
+                console.log("collsion up");
+                this.node.y = arg[0].y - myApp.getInstance().tileSize.height * 2;
                 break;
-            case dataConst.DOWN:
-                if (this._state_1 == dataConst.BIG) {
-                    UIUtil.loaderRes(playerImgData.data[201].name, cc.SpriteFrame, (sp) => {
-                        this.node.getComponent(cc.Sprite).spriteFrame = sp;
-                    });
-                } else if (this._state_1 == dataConst.SMALL) {
-                    UIUtil.loaderRes(playerImgData.data[101].name, cc.SpriteFrame, (sp) => {
-                        this.node.getComponent(cc.Sprite).spriteFrame = sp;
-                    });
+            case dataConst.DIR.DOWN:
+                if (this.isJump == false) {
+                    this._downSpeed = 2;
+                    this._jumpSpeed = dataConst.JUMP_SPEED;
+                    this.node.y = arg[0].y;
+                    this.direction_1 = dataConst.DIR.NONE;
+                }
+                if (this.direction_1 == dataConst.DIR.NONE) {
+                    this.stopJumpAnimate();
                 }
                 break;
         }
     }
 
+    jump() {
+        if (this.isJump === true) {
+            this.jumpAnimate();
+            this._jumpSpeed -= dataConst.G_SPEED;
+            this.node.y += this._jumpSpeed;
+            if (this._jumpSpeed <= 0) {
+                this._isJump = false;
+            }
+        }
+    }
+
     fall() {
         //下落
-        if (this.direction_1 == dataConst.DOWN) {
+        if (this.direction_1 == dataConst.DIR.DOWN) {
             this.jumpAnimate();
-            let downSpeed = 0;
-            downSpeed -= dataConst.G_SPEED;
-            this.node.y += downSpeed;
+            this._downSpeed -= dataConst.G_SPEED;
+            this.node.y += this._downSpeed;
         }
     }
 
@@ -237,8 +251,9 @@ export default class player1Control extends cc.Component {
     }
 
     update(dt) {
-        // if(this._moveState_1 == dataConst.MOVE) {
-        //     this.playerMove();
+        this.jump();
+        // if(this._MOVESTATE.moveState_1 == dataConst.MOVESTATE.MOVE) {
+        //     this.playerMOVESTATE.MOVE();
         // }
     }
 }

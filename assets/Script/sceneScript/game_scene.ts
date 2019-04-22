@@ -11,6 +11,8 @@ import player1Control from "../manager/player1Control";
 import player2Control from "../manager/player2Control";
 import EventManager from "../manager/EventManager";
 import EventConst from "../data/EventConst";
+import audioData from "../data/audioData";
+import AudioManager from "../manager/audioManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -26,11 +28,18 @@ export default class gameScene extends cc.Component {
     @property(cc.Node)
     uiNode: cc.Node = null;
 
+    @property(cc.Node)
+    gameOver: cc.Node = null;
+
+    @property(cc.Node)
+    audioManager: cc.Node = null;
+
     // LIFE-CYCLE CALLBACKS:
     private _player1Comtrol: player1Control = null;
     private _player2Comtrol: player2Control = null;
 
     onLoad() {
+        this.gameOver.active = false;
         this.initPlayer();
         this.initUINode();
         this.initTiledMapSize();
@@ -38,6 +47,7 @@ export default class gameScene extends cc.Component {
 
     onEnable() {
         EventManager.getInstance().on(EventConst.UPDATE_UI, this.updateUINode.bind(this));
+        EventManager.getInstance().on(EventConst.GAMEOVER, this.gameEnd.bind(this));
         let collisionManager = cc.director.getCollisionManager();
         collisionManager.enabled = true;//开启碰撞检测
         //collisionManager.enabledDebugDraw = true;//画边线
@@ -45,10 +55,13 @@ export default class gameScene extends cc.Component {
     }
 
     onDisable() {
-        EventManager.getInstance().off(EventConst.UPDATE_UI);        
+        EventManager.getInstance().off(EventConst.UPDATE_UI);     
+        EventManager.getInstance().off(EventConst.GAMEOVER);     
     }
 
     start() {
+        let AudioManager: AudioManager = this.audioManager.getComponent("audioManager");
+        AudioManager.playMusic(audioData.data[0].id);
     }
 
     initTiledMapSize() {
@@ -68,8 +81,8 @@ export default class gameScene extends cc.Component {
         let objectGroups = this.tiledMap.getObjectGroups();
         //objectGroups[0]._sgNode._visible = false;   //直接访问了私有变量，访问成功，但是编辑器报错
         let objects = objectGroups[0].getObjects();
-        console.log("格子地图对象层所有对象");
-        console.log(objects);
+        //console.log("格子地图对象层所有对象");
+        //console.log(objects);
         //创建单人
         if (UIUtil.checkDataIsNull(myApp.getInstance().playerNum)) {
             let player1_Obj = objectGroups[0].getObject("player1");
@@ -131,6 +144,15 @@ export default class gameScene extends cc.Component {
         if (UIUtil.checkDataIsNull(this._player2Comtrol)) {
             score2.getComponent(cc.Label).string = this._player2Comtrol.Score_2 + "";
         }
+    }
+
+    gameEnd() {
+        this.gameOver.active = true;
+        let seq = cc.sequence(cc.delayTime(15), cc.callFunc(()=>{
+            //this.gameOver.active = false;
+            cc.director.loadScene("menu_scene");
+        }));
+        this.node.runAction(seq);
     }
 
     // update (dt) {}

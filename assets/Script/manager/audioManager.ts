@@ -1,11 +1,10 @@
-import UIUtil from "../util/uiUtil";
-
 /********************
  * @Name：audioManager
  * @Describe：游戏音效管理中心
  * @Author：王全由
  * @Date：2019.03.29
  ********************/
+import UIUtil from "../util/uiUtil";
 
 const { ccclass, property } = cc._decorator;
 
@@ -13,17 +12,15 @@ const { ccclass, property } = cc._decorator;
 export default class AudioManager extends cc.Component {
 
     @property([cc.AudioClip])
-    audio: {
-        type: cc.AudioClip,
-        default: []
-    }
+    audioClip: cc.AudioClip[] = [];
+
+    @property(cc.AudioSource)
+    audioSource: cc.AudioSource = null;
 
     // LIFE-CYCLE CALLBACKS:
 
-    private _audioSource = null;
 
     onLoad() {
-        this._audioSource = this.node.getComponent(cc.AudioSource);
     }
 
     start() { }
@@ -32,8 +29,8 @@ export default class AudioManager extends cc.Component {
     //  * 预加载音效
     //  */
     // preLoadMusic(musicOrder: number) {
-    //     if (UIUtil.checkDataIsNull(this._audioSource)) {
-    //         this._audioSource.AudioClip = this.audio[musicOrder];
+    //     if (UIUtil.checkDataIsNull(this.audioSource)) {
+    //         this.audioSource.AudioClip = this.audio[musicOrder];
     //     }
     // }
 
@@ -41,19 +38,19 @@ export default class AudioManager extends cc.Component {
      * 播放音效
      */
     playMusic(musicOrder: number) {
-        if (UIUtil.checkDataIsNull(this._audioSource)) {
-            if (this._audioSource.isPlaying) {
+        if (UIUtil.checkDataIsNull(this.audioSource)) {
+            if (this.audioSource.isPlaying) {
                 this.stopMusic();
             }
-            this._audioSource.AudioClip = this.audio[musicOrder];
-            this._audioSource.play();
+            this.audioSource.clip = this.audioClip[musicOrder];
+            this.audioSource.play();
         }
     }
 
     stopMusic() {
-        if (UIUtil.checkDataIsNull(this._audioSource)) {
-            this._audioSource.stop();
-            this._audioSource.AudioClip = null;
+        if (UIUtil.checkDataIsNull(this.audioSource)) {
+            this.audioSource.stop();
+            this.audioSource.clip = null;
         }
     }
 
@@ -61,8 +58,8 @@ export default class AudioManager extends cc.Component {
      * 静音
      */
     mute() {
-        if (UIUtil.checkDataIsNull(this._audioSource)) {
-            this._audioSource.mute = !this._audioSource.mute;
+        if (UIUtil.checkDataIsNull(this.audioSource)) {
+            this.audioSource.mute = !this.audioSource.mute;
         }
     }
 
@@ -70,8 +67,8 @@ export default class AudioManager extends cc.Component {
      * 音量设置
      */
     volumeSet() {
-        if (UIUtil.checkDataIsNull(this._audioSource)) {
-            this._audioSource.volume = 0;
+        if (UIUtil.checkDataIsNull(this.audioSource)) {
+            this.audioSource.volume = 0;
         }
     }
 
