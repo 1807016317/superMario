@@ -37,24 +37,8 @@
             "frame": 0,
             "value": {
               "__type__": "cc.Size",
-              "width": 16,
-              "height": 16
-            }
-          },
-          {
-            "frame": 0.16666666666666666,
-            "value": {
-              "__type__": "cc.Size",
-              "width": 16,
-              "height": 16
-            }
-          },
-          {
-            "frame": 0.3333333333333333,
-            "value": {
-              "__type__": "cc.Size",
-              "width": 16,
-              "height": 16
+              "width": 18,
+              "height": 24
             }
           }
         ]

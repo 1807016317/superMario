@@ -1,4 +1,3 @@
-
 /********************
  * @Name：tiledMapUtil
  * @Describe：格子地图的公用方法
@@ -12,6 +11,8 @@ import EventManager from "../manager/EventManager";
 import EventConst from "../data/EventConst";
 import layerData from "../data/layerData";
 import mapData from "../data/mapData";
+import propFactory from "../manager/propFactory";
+import audioData from "../data/audioData";
 
 const { ccclass, property } = cc._decorator;
 
@@ -30,7 +31,7 @@ export default class tiledMapUtil extends cc.Component {
 
     onEnable() {
         EventManager.getInstance().on(EventConst.CHANGE_MAP, this.changeMap.bind(this));
-        EventManager.getInstance().on(EventConst.CHECK_COLLSION, this.checkGIDAt.bind(this));
+        EventManager.getInstance().on(EventConst.CHECK_COLLSION, this.scheduleCollision.bind(this));
     }
 
     onDisable() {
@@ -47,8 +48,16 @@ export default class tiledMapUtil extends cc.Component {
         this._curMap = this.node.getComponent(cc.TiledMap);
         this._allLayers = this._curMap.getLayers();
         //设置水管层的渲染层级
+        let noCoinLayer = this._curMap.getLayer(layerData.data[2001].name);
+        let coinLayer = this._curMap.getLayer(layerData.data[2002].name);
+        let landLayer = this._curMap.getLayer(layerData.data[2003].name);
         let pipeLayer = this._curMap.getLayer(layerData.data[2006].name);
+        let propLayer = this._curMap.getLayer(layerData.data[2007].name);
         pipeLayer.node.zIndex = dataConst.PIPE_LAYER;
+        landLayer.node.zIndex = dataConst.PIPE_LAYER;
+        noCoinLayer.node.zIndex = dataConst.PIPE_LAYER;
+        coinLayer.node.zIndex = dataConst.PIPE_LAYER;
+        propLayer.node.zIndex = dataConst.PIPE_LAYER;
     }
 
     changeMap() {
@@ -81,54 +90,110 @@ export default class tiledMapUtil extends cc.Component {
     }
 
     /**
-     * 玩家与TiledLayer碰撞检测
+     * 传入节点与TiledLayer碰撞检测
      */
-    collision() {
-        let player1 = myApp.getInstance().player1Node;
-        if (!UIUtil.checkNodeisLive(player1)) {
+    scheduleCollision(event) {
+        this.schedule(() => {
+            this.collision(event)
+        }, 0);
+    }
+
+    collision(event) {
+        let target = event[0];
+        if (!UIUtil.checkNodeisLive(target)) {
             return;
         }
-        let player1_box = player1.getBoundingBox();
-        let box_center = player1_box.center;
+        let target_box = target.getBoundingBox();
+        let box_center = target_box.center;
         //从上下左右四个方向来判断是否产生碰撞
-        let box_top = cc.v2(box_center.x, box_center.y + player1_box.height / 2);
-        let box_bottom = cc.v2(box_center.x, box_center.y - player1_box.height);
-        let box_left = cc.v2(box_center.x - player1_box.width / 2, box_center.y);
-        let box_right = cc.v2(box_center.x + player1_box.width / 2, box_center.y);
-        this.checkGIDAt(box_top, dataConst.DIR.UP);
-        this.checkGIDAt(box_bottom, dataConst.DIR.DOWN);
-        this.checkGIDAt(box_left, dataConst.DIR.LEFT);
-        this.checkGIDAt(box_right, dataConst.DIR.RIGHT);
+        let box_top = cc.v2(box_center.x, box_center.y + target_box.height*4/7);
+        let box_bottom = cc.v2(box_center.x, box_center.y - target_box.height*4/7);
+        let box_left = cc.v2(box_center.x - target_box.width / 2, box_center.y);
+        let box_right = cc.v2(box_center.x + target_box.width / 2, box_center.y);
+        this.checkGIDAt(box_top, dataConst.DIR.UP, event);
+        this.checkGIDAt(box_bottom, dataConst.DIR.DOWN, event);
+        this.checkGIDAt(box_left, dataConst.DIR.LEFT, event);
+        this.checkGIDAt(box_right, dataConst.DIR.RIGHT, event);
     }
 
     /**
      * 获取当前坐标的坐标
      */
-    checkGIDAt(pos: cc.Vec2, dir) {
+    checkGIDAt(pos: cc.Vec2, dir, event, ) {
+        let mapSize = this._curMap.getMapSize();
+        let tileSize = this._curMap.getTileSize();
         let vec = this.toTilesPos(pos);
         if (vec.x < 0 || vec.y < 0) {
-            //EventManager.getInstance().emit(EventConst.LISTEN_COLLSION);
+            if (event[0].type == "monster") {
+                event[0].destroy();
+            }
+            return;
+        }
+        if (vec.y >= mapSize.height) {
+            event[2](dir);
+            if (event[0].type == "monster") {
+                event[0].destroy();
+            } else {
+                EventManager.getInstance().emit(EventConst.GAMEOVER);
+            }
             return;
         }
 
-        let player_origin = this.toViewPos(vec);
+        let hasColl = false;
+        let target_origin = this.toViewPos(vec);
         for (const key in this._allLayers) {
             let properties = this._allLayers[key].getProperties();
             if (properties["isColliding"]) {
-                //console.log("vec=============" + vec);
                 let tileGid = this._allLayers[key].getTileGIDAt(vec);
                 if (tileGid != 0) {
                     //gid不等于0时，是碰撞到了，返回真
-                    EventManager.getInstance().emit(EventConst.LISTEN_COLLSION, player_origin, dir);
-                    return;
+                    let reward = this.rewardCollsion(this._allLayers[key].getLayerName(), target_origin, dir);
+                    target_origin.x += (event[0].width - tileSize.width) / 2;
+                    target_origin.y += (event[0].height - tileSize.height) / 2;
+                    let arg = [
+                        target_origin,
+                        dir,
+                        reward
+                    ]
+                    event[1](arg);
+                    //EventManager.getInstance().emit(EventConst.COLLSION_HANDLE, target_origin, dir);
+                    hasColl = true;
+                    if (UIUtil.checkDataIsNull(reward)) {
+                        this._allLayers[key].setTileGIDAt(0, vec.x, vec.y);
+                        hasColl = false;
+                    }
                 }
             }
         }
-        let player1: cc.Node = myApp.getInstance().player1Node;
-        let player1Control = player1.getComponent("player1Control");
-        if (dir === dataConst.DIR.DOWN && !player1Control.isJump) {
-            player1Control.direction_1 = dataConst.DIR.DOWN;
-            //player1Control.moveState_1 = dataConst.MOVESTATE.MOVE;
+        if (!hasColl) {
+            event[2](dir);
+        }
+        //EventManager.getInstance().emit(EventConst.CHECK_FALL, dir);
+    }
+
+    /**
+     * 奖励碰撞
+     */
+    rewardCollsion(name, pos, dir) {
+        switch (name) {
+            case layerData.data[2002].name:
+                if (dir == dataConst.DIR.UP) {
+                    EventManager.getInstance().emit(EventConst.MUSIC_PLAY, audioData.data[4].id);
+                    propFactory.getInstance().initCoin(this.node, pos);
+                    return dataConst.rewardType.coin;
+                }
+                return null;
+            case layerData.data[2005].name:
+                return dataConst.rewardType.coin;
+            case layerData.data[2007].name:
+                if (dir == dataConst.DIR.UP) {
+                    EventManager.getInstance().emit(EventConst.MUSIC_PLAY, audioData.data[2].id);
+                    propFactory.getInstance().initProp(this.node, pos);
+                    return dataConst.rewardType.prop;
+                }
+                return null;
+            default:
+                return null;
         }
     }
 
@@ -140,10 +205,9 @@ export default class tiledMapUtil extends cc.Component {
         let tileSize = this._curMap.getTileSize();
         let y = mapSize.height - Math.floor(pos.y / tileSize.height) - 1;
         let x = Math.floor(pos.x / tileSize.width);
-        if (y >= mapSize.height) {
-            EventManager.getInstance().emit(EventConst.GAMEOVER);
-            return cc.v2(x, mapSize.height - 1);
-        }
+        // if (y >= mapSize.height) {
+        //     return cc.v2(x, mapSize.height - 1);
+        // }
         return cc.v2(x, y);
     }
 
@@ -166,7 +230,6 @@ export default class tiledMapUtil extends cc.Component {
         this.node.parent.runAction(followAction);
     }
 
-    update(dt) {
-        this.collision();
-    }
+    //update(dt) {
+    //}
 }

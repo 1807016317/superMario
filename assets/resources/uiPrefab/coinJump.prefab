@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "monster",
+    "_name": "coinJump",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -24,16 +24,10 @@
       },
       {
         "__id__": 3
-      },
-      {
-        "__id__": 4
-      },
-      {
-        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 6
+      "__id__": 4
     },
     "_opacity": 255,
     "_color": {
@@ -45,8 +39,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 16
+      "width": 0,
+      "height": 0
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -77,7 +71,7 @@
     "_skewX": 0,
     "_skewY": 0,
     "_zIndex": 0,
-    "groupIndex": 3,
+    "groupIndex": 0,
     "_id": ""
   },
   {
@@ -90,9 +84,7 @@
     "_enabled": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "5f4ffddb-590e-44e2-930d-36cfee97fe0c"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -116,74 +108,15 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "96ffad59-2a63-49dd-98ac-43934394dead"
+    },
     "_clips": [
       {
-        "__uuid__": "9dfc8991-bfde-434f-9820-9aa7a48c3039"
-      },
-      {
-        "__uuid__": "d6ed60b3-74a2-4a46-bc91-9145d6bb27b3"
-      },
-      {
-        "__uuid__": "c263107d-1fb1-418e-9ff7-fb88f7dfea8e"
-      },
-      {
-        "__uuid__": "cec83fa9-3b1c-4683-9749-646296238beb"
-      },
-      {
-        "__uuid__": "88e80be8-cde9-4332-badd-2d6769703bb0"
-      },
-      {
-        "__uuid__": "353bcf45-500c-4090-b164-6b23a1fcf925"
-      },
-      {
-        "__uuid__": "5dd2ee57-aac6-4adc-ac8c-8253a1bd6f88"
-      },
-      {
-        "__uuid__": "f4e76526-15b5-48c2-89cf-c908be100542"
-      },
-      {
-        "__uuid__": "d97175a3-a5e2-400f-b354-526157bd3a7f"
-      },
-      null,
-      null,
-      null
+        "__uuid__": "96ffad59-2a63-49dd-98ac-43934394dead"
+      }
     ],
-    "playOnLoad": false,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.BoxCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "_size": {
-      "__type__": "cc.Size",
-      "width": 16,
-      "height": 16
-    },
-    "_id": ""
-  },
-  {
-    "__type__": "940b9DN/lNGW48FflTHZqlr",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "monsterAnimation": {
-      "__id__": 3
-    },
+    "playOnLoad": true,
     "_id": ""
   },
   {
@@ -192,9 +125,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "7a5b7193-e894-4eb6-b76c-a50e1cda2bea"
+      "__uuid__": "7b25d6cd-bff6-4197-a7e6-a854b2a53c31"
     },
-    "fileId": "82wGBqJGpKMLCF2+jbudUM",
+    "fileId": "6b5xOqn5xKLJgf2cRJkVQV",
     "sync": false
   }
 ]

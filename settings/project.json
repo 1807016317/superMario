@@ -6,11 +6,27 @@
     [
       false,
       false,
+      true,
       true
     ],
     [
       false,
       true,
+      false,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      true,
+      false
+    ],
+    [
+      false,
+      false,
+      true,
+      false,
       false
     ]
   ],
@@ -47,9 +63,11 @@
   "group-list": [
     "default",
     "wall",
-    "player"
+    "player",
+    "monster",
+    "prop"
   ],
-  "last-module-event-record-time": 1555397955331,
+  "last-module-event-record-time": 1556025137034,
   "simulator-orientation": true,
   "simulator-resolution": {
     "height": 720,

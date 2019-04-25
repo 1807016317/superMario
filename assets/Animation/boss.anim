@@ -42,6 +42,18 @@
             }
           }
         ]
+      },
+      "cc.BoxCollider": {
+        "size": [
+          {
+            "frame": 0,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 32,
+              "height": 32
+            }
+          }
+        ]
       }
     }
   },

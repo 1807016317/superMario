@@ -5,6 +5,8 @@
  * @Date：2019.03.29
  ********************/
 import UIUtil from "../util/uiUtil";
+import EventManager from "./EventManager";
+import EventConst from "../data/EventConst";
 
 const { ccclass, property } = cc._decorator;
 
@@ -19,11 +21,22 @@ export default class AudioManager extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-
     onLoad() {
     }
 
-    start() { }
+    onEnable() {
+        EventManager.getInstance().on(EventConst.MUSIC_PLAY, this.playMusic.bind(this));
+        EventManager.getInstance().on(EventConst.MUSIC_STOP, this.stopMusic.bind(this));
+        EventManager.getInstance().on(EventConst.MUSIC_MUTE, this.mute.bind(this));
+        EventManager.getInstance().on(EventConst.MUSIC_VOLUME, this.volumeSet.bind(this));
+    }
+
+    onDisable() {
+        EventManager.getInstance().off(EventConst.MUSIC_PLAY);
+        EventManager.getInstance().off(EventConst.MUSIC_STOP);
+        EventManager.getInstance().off(EventConst.MUSIC_MUTE);
+        EventManager.getInstance().off(EventConst.MUSIC_VOLUME);
+    }
 
     // /**
     //  * 预加载音效
@@ -35,9 +48,24 @@ export default class AudioManager extends cc.Component {
     // }
 
     /**
-     * 播放音效
+     * @:播放音乐
      */
-    playMusic(musicOrder: number) {
+    playMusic(event) {
+        let musicOrder = event[0] ? event[0] : event;
+        if (UIUtil.checkDataIsNull(this.audioSource)) {
+            if (this.audioSource.isPlaying) {
+                this.stopMusic();
+            }
+            this.audioSource.clip = this.audioClip[musicOrder];
+            this.audioSource.play();
+        }
+    }
+
+    /**
+     * @:播放音效
+     */
+    public playEffect(event) {
+        let musicOrder = event[0] ? event[0] : event;
         if (UIUtil.checkDataIsNull(this.audioSource)) {
             if (this.audioSource.isPlaying) {
                 this.stopMusic();
@@ -66,9 +94,10 @@ export default class AudioManager extends cc.Component {
     /**
      * 音量设置
      */
-    volumeSet() {
+    volumeSet(event) {
+        let vol = event[0] ? event[0] : event;
         if (UIUtil.checkDataIsNull(this.audioSource)) {
-            this.audioSource.volume = 0;
+            this.audioSource.volume = vol;
         }
     }
 

@@ -7,9 +7,9 @@
 
 export default class mapData {
     static data = {
-        0: { name: "Map1" },
-        1: { name: "Map2" },
-        2: { name: "Map3" },
-        3: { name: "Map4" },
+        0: { name: "tmx/Map1" },
+        1: { name: "tmx/Map2" },
+        2: { name: "tmx/Map3" },
+        3: { name: "tmx/Map4" },
     }
 }

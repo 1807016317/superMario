@@ -12,7 +12,6 @@ import player2Control from "../manager/player2Control";
 import EventManager from "../manager/EventManager";
 import EventConst from "../data/EventConst";
 import audioData from "../data/audioData";
-import AudioManager from "../manager/audioManager";
 
 const { ccclass, property } = cc._decorator;
 
@@ -31,9 +30,6 @@ export default class gameScene extends cc.Component {
     @property(cc.Node)
     gameOver: cc.Node = null;
 
-    @property(cc.Node)
-    audioManager: cc.Node = null;
-
     // LIFE-CYCLE CALLBACKS:
     private _player1Comtrol: player1Control = null;
     private _player2Comtrol: player2Control = null;
@@ -41,8 +37,20 @@ export default class gameScene extends cc.Component {
     onLoad() {
         this.gameOver.active = false;
         this.initPlayer();
+        this.initMonster();
         this.initUINode();
         this.initTiledMapSize();
+        cc.director.preloadScene("menu_scene");
+        this.a();
+    }
+
+    a() {
+        let viewSize = cc.view.getVisibleSize();
+        let label = new cc.Node();
+        let labelSize = label.addComponent(cc.Label);
+        label.parent = this.node;
+        label.color = cc.Color.RED;
+        labelSize.string = "当前手机分辨率：" + viewSize.width + " * " + viewSize.height;
     }
 
     onEnable() {
@@ -56,20 +64,17 @@ export default class gameScene extends cc.Component {
 
     onDisable() {
         EventManager.getInstance().off(EventConst.UPDATE_UI);     
-        EventManager.getInstance().off(EventConst.GAMEOVER);     
+        EventManager.getInstance().off(EventConst.GAMEOVER);
     }
 
     start() {
-        let AudioManager: AudioManager = this.audioManager.getComponent("audioManager");
-        AudioManager.playMusic(audioData.data[0].id);
+        EventManager.getInstance().emit(EventConst.MUSIC_PLAY, audioData.data[0].id);
     }
 
     initTiledMapSize() {
         //格子地图适配屏幕大小
         let tiledNode = this.tiledMap.node;
         let viewSize = cc.view.getVisibleSize();
-        //let canvasHight = this.node.parent.height;
-        //let canvasWidth = this.node.parent.width;
         tiledNode.x = -viewSize.width / 2;
         tiledNode.y = -viewSize.height / 2;
         tiledNode.scale = viewSize.height / tiledNode.height;
@@ -81,8 +86,6 @@ export default class gameScene extends cc.Component {
         let objectGroups = this.tiledMap.getObjectGroups();
         //objectGroups[0]._sgNode._visible = false;   //直接访问了私有变量，访问成功，但是编辑器报错
         let objects = objectGroups[0].getObjects();
-        //console.log("格子地图对象层所有对象");
-        //console.log(objects);
         //创建单人
         if (UIUtil.checkDataIsNull(myApp.getInstance().playerNum)) {
             let player1_Obj = objectGroups[0].getObject("player1");
@@ -146,9 +149,17 @@ export default class gameScene extends cc.Component {
         }
     }
 
+    initMonster() {
+        //初始化怪物
+        let monsterTs = this.node.getComponent("monsterFactory");
+        let objectGroups = this.tiledMap.getObjectGroups();
+        let objects = objectGroups[0].getObjects();
+        monsterTs.init(objects, this.tiledMap.node);
+    }
+
     gameEnd() {
         this.gameOver.active = true;
-        let seq = cc.sequence(cc.delayTime(15), cc.callFunc(()=>{
+        let seq = cc.sequence(cc.delayTime(5), cc.callFunc(()=>{
             //this.gameOver.active = false;
             cc.director.loadScene("menu_scene");
         }));

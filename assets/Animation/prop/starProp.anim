@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "tortoise_move",
+  "_name": "starProp",
   "_objFlags": 0,
   "_native": "",
   "_duration": 0.35,
@@ -14,19 +14,31 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "6f4f311b-5383-4a96-baff-7fc368df61ae"
+              "__uuid__": "6c0b7d8c-ec08-4332-b2c9-f663579b847c"
+            }
+          },
+          {
+            "frame": 0.08333333333333333,
+            "value": {
+              "__uuid__": "943c2ba7-d9f0-4ea4-aada-79dda10e838b"
             }
           },
           {
             "frame": 0.16666666666666666,
             "value": {
-              "__uuid__": "2922b010-5617-471e-90d6-0be36e56d413"
+              "__uuid__": "6fd7afaa-4ace-4019-9a9a-a6675aec0a65"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "bafbebe7-2eb3-4f3b-8be8-c63afec4d505"
             }
           },
           {
             "frame": 0.3333333333333333,
             "value": {
-              "__uuid__": "6f4f311b-5383-4a96-baff-7fc368df61ae"
+              "__uuid__": "6c0b7d8c-ec08-4332-b2c9-f663579b847c"
             }
           }
         ]
@@ -37,8 +49,8 @@
             "frame": 0,
             "value": {
               "__type__": "cc.Size",
-              "width": 18,
-              "height": 24
+              "width": 16,
+              "height": 17
             }
           }
         ]
