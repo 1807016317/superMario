@@ -20,6 +20,8 @@ export default class myApp {
     private _mapSize: cc.Size = null;
     private _tileSize: cc.Size = null;
 
+    private constructor() {}
+
     public static getInstance(): myApp {
         if (this._instance == null) {
             this._instance = new myApp();

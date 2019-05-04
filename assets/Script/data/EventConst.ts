@@ -13,6 +13,7 @@ export default class EventConst {
     static CHECK_COLLSION = "check_collsion"; //碰撞检测
     static GAMEOVER = "gameOver"; //死掉检测
     static CHECK_FALL = "check_fall"; //玩家下落判定
+    static ADD_SCORE = "addScore"; //玩家加分
 
     /**
      * @:音效事件

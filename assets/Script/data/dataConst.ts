@@ -15,10 +15,10 @@ export default class dataConst {
 
     static DOWN_TIME = "300"; //@单关倒计时，300s
     static MOVE_SPEED = 2; //@移动速度
-    static JUMP_SPEED = 8; //@起跳速度
-    static DOWN_SPEED = 2; //@下落初始速度
+    static JUMP_SPEED = 7; //@起跳速度
+    static DOWN_SPEED = 3; //@下落初始速度
 
-    static G_SPEED = 0.5; //@自由落体加速度
+    static G_SPEED = 0.4; //@自由落体加速度
     //@层级
     static PIPE_LAYER = 10;  //水管层
     //@关卡常量
@@ -28,6 +28,14 @@ export default class dataConst {
         2: { checkNum: 3, checkStr: "3 - 1" },
         3: { checkNum: 4, checkStr: "4 - 1" },
         length: 4,
+    }
+
+    /**
+     * 动物类型
+     */
+    static roleType = {
+        player: "player",
+        monster: "monster"
     }
 
     //@:状态常量
@@ -90,5 +98,17 @@ export default class dataConst {
         mushroom: "mushroom",
         flower: "flower",
         star: "star"
-    }
+    };
+
+    /**
+     * 颜色
+     */
+    static red = cc.color(255, 0, 0, 255); //红
+    static orange = cc.color(255, 125, 0, 255); //橙
+    static yellow = cc.color(255, 255, 0, 255); //黄
+    static green = cc.color(0, 255, 0, 255); //绿
+    static cyan = cc.color(0, 255, 255, 255); //青
+    static bule = cc.color(0, 0, 255, 255); //蓝
+    static purple = cc.color(255, 0, 255, 255); //紫
+
 }

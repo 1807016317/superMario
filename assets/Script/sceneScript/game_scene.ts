@@ -12,6 +12,7 @@ import player2Control from "../manager/player2Control";
 import EventManager from "../manager/EventManager";
 import EventConst from "../data/EventConst";
 import audioData from "../data/audioData";
+import nodePool from "../util/nodePool";
 
 const { ccclass, property } = cc._decorator;
 
@@ -30,6 +31,9 @@ export default class gameScene extends cc.Component {
     @property(cc.Node)
     gameOver: cc.Node = null;
 
+    @property(cc.Prefab)
+    bulletPrefab: cc.Prefab = null;
+
     // LIFE-CYCLE CALLBACKS:
     private _player1Comtrol: player1Control = null;
     private _player2Comtrol: player2Control = null;
@@ -41,7 +45,12 @@ export default class gameScene extends cc.Component {
         this.initUINode();
         this.initTiledMapSize();
         cc.director.preloadScene("menu_scene");
-        this.a();
+        this.initNodePool();
+        //this.a();
+    }
+
+    initNodePool() {
+        nodePool.getInstance().createBullet(this.bulletPrefab);
     }
 
     a() {
@@ -91,6 +100,7 @@ export default class gameScene extends cc.Component {
             let player1_Obj = objectGroups[0].getObject("player1");
             let player1 = cc.instantiate(this.playerPrefab[0]);
             player1.parent = this.tiledMap.node;
+            player1["type"] = dataConst.roleType.player;
             myApp.getInstance().player1Node = player1;
             this._player1Comtrol = player1.getComponent("player1Control");
             player1.setPosition(player1_Obj.x, player1_Obj.y);
@@ -100,6 +110,7 @@ export default class gameScene extends cc.Component {
                 let player2_Obj = objectGroups[0].getObject("player2");
                 let player2 = cc.instantiate(this.playerPrefab[1]);
                 player2.parent = this.tiledMap.node;
+                player2["type"] = dataConst.roleType.player;
                 myApp.getInstance().player2Node = player2;
                 player2.setPosition(player2_Obj.sgNode.getPosition());
             }
@@ -120,6 +131,9 @@ export default class gameScene extends cc.Component {
             let time = Number(timeLabNode.getComponent(cc.Label).string);
             time -= 1;
             timeLabNode.getComponent(cc.Label).string = time + "";
+            if(time <= 0) {
+                this.gameEnd();
+            }
         }, 1);
         //角色分数
         let score1 = UIUtil.seekChildByName(this.uiNode, "score1");

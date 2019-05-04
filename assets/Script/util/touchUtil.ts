@@ -1,15 +1,15 @@
-import dataConst from "../data/dataConst";
-import myApp from "../myApp";
-import EventManager from "../manager/EventManager";
-import UIUtil from "./uiUtil";
-import EventConst from "../data/EventConst";
-
 /********************
  * @Name：btnUtil
  * @Describe：游戏界面按键操作
  * @Author：王全由
  * @Date：2019.03.29
  ********************/
+import dataConst from "../data/dataConst";
+import myApp from "../myApp";
+import EventManager from "../manager/EventManager";
+import UIUtil from "./uiUtil";
+import EventConst from "../data/EventConst";
+import nodePool from "./nodePool";
 
 const { ccclass, property } = cc._decorator;
 
@@ -122,8 +122,8 @@ export default class btnUtil extends cc.Component {
 
     btnA(event) {
         //攻击
-        if (this._player1Control.state_1 == dataConst.BODYSTATE.COMBATABLE) {
-
+        if (this._player1Control.state_1 === dataConst.BODYSTATE.COMBATABLE) {
+            nodePool.getInstance().onBulletInit(myApp.getInstance().player1Node);
         }
     }
 

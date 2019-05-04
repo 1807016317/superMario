@@ -1,5 +1,6 @@
 import myApp from "../myApp";
 import UIUtil from "../util/uiUtil";
+import dataConst from "../data/dataConst";
 
 /********************
  * @Name：GM
@@ -50,5 +51,21 @@ export default class GM extends cc.Component {
         if(UIUtil.checkDataIsNull(speed)) {
             myApp.getInstance().moveSpeed = speed;
         }
+    }
+
+    /**
+     * 一键变大
+     */
+    toBig() {
+        myApp.getInstance().player1Node.getComponent("player1Control").state_1 = dataConst.BODYSTATE.BIG;
+        this.closeBtn();    
+    }
+
+    /**
+     * 一键无敌
+     */
+    toInvincible() {
+        myApp.getInstance().player1Node.getComponent("player1Control").state_1 = dataConst.BODYSTATE.INVINCIBLE;
+        this.closeBtn();  
     }
 }

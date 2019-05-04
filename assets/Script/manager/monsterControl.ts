@@ -7,6 +7,7 @@
 import dataConst from "../data/dataConst";
 import EventManager from "./EventManager";
 import EventConst from "../data/EventConst";
+import myApp from "../myApp";
 
 const { ccclass, property } = cc._decorator;
 
@@ -20,6 +21,7 @@ export default class monsterControl extends cc.Component {
     private _dir = dataConst.DIR.NONE;
     private _downSpeed = dataConst.DOWN_SPEED;
     private _isChangeDir = true;
+    private _collision: dataConst = dataConst.DIR.NONE; ///是否碰撞
 
 
     //onLoad () {}
@@ -53,14 +55,20 @@ export default class monsterControl extends cc.Component {
     onCollisionMapLayer(event) {
         switch (event[1]) {
             case dataConst.DIR.LEFT:
+                if (this.dir != dataConst.DIR.LEFT) {
+                    break;
+                }
                 this._isChangeDir = !this._isChangeDir;
                 break;
             case dataConst.DIR.RIGHT:
+                if (this.dir != dataConst.DIR.RIGHT) {
+                    break;
+                }
                 this._isChangeDir = !this._isChangeDir;
                 break;
             case dataConst.DIR.DOWN:
                 this._downSpeed = dataConst.DOWN_SPEED;
-                this.node.y = event[0].y;
+                this.node.y = event[0].y + myApp.getInstance().tileSize.height / 2 + this.node.height / 2;
                 this.dir = dataConst.DIR.NONE;
                 break;
         }
@@ -70,6 +78,13 @@ export default class monsterControl extends cc.Component {
         } else {
             //this._isCollison为假，运动方向变为右
             this.dir = dataConst.DIR.RIGHT;
+        }
+    }
+
+    onCollisionEnter(other, self) {
+        if(other.node.name === "bullet") {
+            this.node.destroy();
+            EventManager.getInstance().emit(EventConst.ADD_SCORE, 5);
         }
     }
 

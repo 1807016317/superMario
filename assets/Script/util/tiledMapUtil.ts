@@ -22,11 +22,16 @@ export default class tiledMapUtil extends cc.Component {
     private _curMap: cc.TiledMap = null;
     private _allLayers = null;
     private _objectGroups = null;
+    private _mapSize = null;
+    private _tileSize = null;
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
         this.init();
         myApp.getInstance().tileNode = this.node;
+
+        this._mapSize = this._curMap.getMapSize();
+        this._tileSize = this._curMap.getTileSize();
     }
 
     onEnable() {
@@ -104,59 +109,79 @@ export default class tiledMapUtil extends cc.Component {
             return;
         }
         let target_box = target.getBoundingBox();
-        let box_center = target_box.center;
+        let box_origin = target_box.origin;
         //从上下左右四个方向来判断是否产生碰撞
-        let box_top = cc.v2(box_center.x, box_center.y + target_box.height*4/7);
-        let box_bottom = cc.v2(box_center.x, box_center.y - target_box.height*4/7);
-        let box_left = cc.v2(box_center.x - target_box.width / 2, box_center.y);
-        let box_right = cc.v2(box_center.x + target_box.width / 2, box_center.y);
-        this.checkGIDAt(box_top, dataConst.DIR.UP, event);
-        this.checkGIDAt(box_bottom, dataConst.DIR.DOWN, event);
+        let box_top_right = cc.v2(box_origin.x + target_box.width * 9 / 10, box_origin.y + target_box.height + this._tileSize.height / 2);//上
+        let box_top_left = cc.v2(box_origin.x, box_origin.y + target_box.height + this._tileSize.height / 2);//上
+        let box_top_center = cc.v2(box_origin.x + target_box.width / 2, box_origin.y + target_box.height + this._tileSize.height / 2);//上
+        let box_bottom_left = cc.v2(box_origin.x, box_origin.y - this._tileSize.height / 2);//下
+        let box_bottom_center = cc.v2(box_origin.x + target_box.width / 2, box_origin.y);//下
+        let box_bottom_right = cc.v2(box_origin.x + target_box.width * 9 / 10, box_origin.y - this._tileSize.height / 2);//下
+        let box_left_top = cc.v2(box_origin.x - target_box.width * 1 / 10, box_origin.y + target_box.height);//左
+        let box_left = cc.v2(box_origin.x - target_box.width * 1 / 10, box_origin.y + target_box.height / 4);//左
+        let box_right = cc.v2(box_origin.x + target_box.width * 11 / 10, box_origin.y + target_box.height / 4);//右
+        let box_right_top = cc.v2(box_origin.x + target_box.width * 11 / 10, box_origin.y + target_box.height);//右
+        this.checkGIDAt(box_top_left, dataConst.DIR.UP, event);
+        this.checkGIDAt(box_top_right, dataConst.DIR.UP, event);
+        this.checkGIDAt(box_top_center, dataConst.DIR.UP, event);
+        this.checkGIDAt(box_bottom_left, dataConst.DIR.DOWN, event, box_bottom_right);
+        //this.checkGIDAt(box_bottom_right, dataConst.DIR.DOWN, event);
+        this.checkGIDAt(box_left_top, dataConst.DIR.LEFT, event);
         this.checkGIDAt(box_left, dataConst.DIR.LEFT, event);
+        this.checkGIDAt(box_right_top, dataConst.DIR.RIGHT, event);
         this.checkGIDAt(box_right, dataConst.DIR.RIGHT, event);
     }
 
     /**
      * 获取当前坐标的坐标
+     * @param supplement //补充参数
      */
-    checkGIDAt(pos: cc.Vec2, dir, event, ) {
-        let mapSize = this._curMap.getMapSize();
-        let tileSize = this._curMap.getTileSize();
+    checkGIDAt(pos: cc.Vec2, dir, event, supplement?) {
         let vec = this.toTilesPos(pos);
         if (vec.x < 0 || vec.y < 0) {
-            if (event[0].type == "monster") {
+            if (event[0].type == dataConst.roleType.monster) {
                 event[0].destroy();
             }
             return;
         }
-        if (vec.y >= mapSize.height) {
-            event[2](dir);
-            if (event[0].type == "monster") {
+        if (vec.y >= this._mapSize.height) {
+            if (UIUtil.checkDataIsNull(event[2])) {
+                event[2](dir);
+            }
+            if (event[0].type == dataConst.roleType.monster) {
                 event[0].destroy();
-            } else {
+            } else if (event[0].type == dataConst.roleType.player){
                 EventManager.getInstance().emit(EventConst.GAMEOVER);
             }
             return;
         }
 
-        let hasColl = false;
-        let target_origin = this.toViewPos(vec);
+        let hasColl = false;   //判断向上是否撞到东西
+        let target_origin = event[0].getPosition();
+        if(dir == dataConst.DIR.DOWN) {
+            target_origin = this.toViewPos(vec);
+        }
+        let vec_View = this.toViewPos(vec);
+        vec_View.y += this._tileSize.width;
         for (const key in this._allLayers) {
             let properties = this._allLayers[key].getProperties();
             if (properties["isColliding"]) {
                 let tileGid = this._allLayers[key].getTileGIDAt(vec);
                 if (tileGid != 0) {
                     //gid不等于0时，是碰撞到了，返回真
-                    let reward = this.rewardCollsion(this._allLayers[key].getLayerName(), target_origin, dir);
-                    target_origin.x += (event[0].width - tileSize.width) / 2;
-                    target_origin.y += (event[0].height - tileSize.height) / 2;
+                    let reward = null;
+                    if(event[0].type == dataConst.roleType.player) {
+                        reward = this.rewardCollsion(this._allLayers[key].getLayerName(), vec_View, dir)
+                    }
                     let arg = [
                         target_origin,
                         dir,
                         reward
                     ]
-                    event[1](arg);
-                    //EventManager.getInstance().emit(EventConst.COLLSION_HANDLE, target_origin, dir);
+                    if (UIUtil.checkDataIsNull(event[1])
+                    && this._allLayers[key].getLayerName() != layerData.data[2005].name) {
+                        event[1](arg);
+                    }
                     hasColl = true;
                     if (UIUtil.checkDataIsNull(reward)) {
                         this._allLayers[key].setTileGIDAt(0, vec.x, vec.y);
@@ -165,8 +190,11 @@ export default class tiledMapUtil extends cc.Component {
                 }
             }
         }
-        if (!hasColl) {
+        if (!hasColl && UIUtil.checkDataIsNull(event[2])) {
             event[2](dir);
+            if(UIUtil.checkDataIsNull(supplement)) {
+                this.checkGIDAt(supplement, dir, event);
+            }
         }
         //EventManager.getInstance().emit(EventConst.CHECK_FALL, dir);
     }
@@ -201,12 +229,10 @@ export default class tiledMapUtil extends cc.Component {
      * 将屏幕坐标转换为TiledMap的坐标
      */
     toTilesPos(pos: cc.Vec2) {
-        let mapSize = this._curMap.getMapSize();
-        let tileSize = this._curMap.getTileSize();
-        let y = mapSize.height - Math.floor(pos.y / tileSize.height) - 1;
-        let x = Math.floor(pos.x / tileSize.width);
-        // if (y >= mapSize.height) {
-        //     return cc.v2(x, mapSize.height - 1);
+        let y = this._mapSize.height - Math.floor(pos.y / this._tileSize.height) - 1;
+        let x = Math.floor(pos.x / this._tileSize.width);
+        // if (y >= this._mapSize.height) {
+        //     return cc.v2(x, this._mapSize.height - 1);
         // }
         return cc.v2(x, y);
     }
@@ -215,10 +241,8 @@ export default class tiledMapUtil extends cc.Component {
      * 将TiledMap坐标转换为屏幕的坐标
      */
     toViewPos(pos: cc.Vec2) {
-        let mapSize = this._curMap.getMapSize();
-        let tileSize = this._curMap.getTileSize();
-        let x = pos.x * tileSize.width + tileSize.width / 2;
-        let y = (mapSize.height - pos.y) * tileSize.height + tileSize.height / 2;
+        let x = pos.x * this._tileSize.width + this._tileSize.width / 2;
+        let y = (this._mapSize.height - pos.y) * this._tileSize.height - this._tileSize.height / 2;
         return cc.v2(x, y);
     }
 

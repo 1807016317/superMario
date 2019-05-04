@@ -20,9 +20,19 @@
       false,
       true,
       true,
+      false,
+      null,
+      true
+    ],
+    [
+      false,
+      false,
+      true,
+      false,
       false
     ],
     [
+      false,
       false,
       false,
       true,
@@ -65,9 +75,10 @@
     "wall",
     "player",
     "monster",
-    "prop"
+    "prop",
+    "bullet"
   ],
-  "last-module-event-record-time": 1556025137034,
+  "last-module-event-record-time": 1556951241204,
   "simulator-orientation": true,
   "simulator-resolution": {
     "height": 720,

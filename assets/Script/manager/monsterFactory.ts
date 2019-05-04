@@ -37,11 +37,10 @@ export default class monsterFactory extends cc.Component {
         }
         if (UIUtil.checkDataIsNull(mushroom_obj)) {
             for (const key in mushroom_obj) {
-                let vec = cc.v2(mushroom_obj[key].x, mushroom_obj[key].y);
-                let vecOfWorld = this.node.convertToWorldSpaceAR(vec);
                 let monster = cc.instantiate(this.monsterPrefab);
+                monster.name = "mushroom_mon" + key;
                 monster.parent = this._parentNode;
-                monster["type"] = "monster";
+                monster["type"] = dataConst.roleType.monster;
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").mushroomMove_A();
@@ -64,7 +63,8 @@ export default class monsterFactory extends cc.Component {
         if (UIUtil.checkDataIsNull(flower_obj)) {
             for (const key in flower_obj) {
                 let monster = cc.instantiate(this.monsterPrefab);
-                monster["type"] = "monster";
+                monster["type"] = dataConst.roleType.monster;
+                monster.name = "flower_mon" + key;
                 monster.parent = this._parentNode;
                 monster["moveType"] = dataConst.monsterMoveType.portrait;
                 monster.group = dataConst.GROUP.monster;
@@ -89,7 +89,8 @@ export default class monsterFactory extends cc.Component {
             for (const key in tortoise_obj) {
                 let monster = cc.instantiate(this.monsterPrefab);
                 monster.parent = this._parentNode;
-                monster["type"] = "monster";
+                monster["type"] = dataConst.roleType.monster;
+                monster.name = "tortoise" + key;
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").tortoiseMove_A();
@@ -107,7 +108,8 @@ export default class monsterFactory extends cc.Component {
             if (obj[key].name === "boss") {
                 let monster = cc.instantiate(this.monsterPrefab);
                 monster.parent = this._parentNode;
-                monster["type"] = "monster";
+                monster["type"] = dataConst.roleType.monster;
+                monster.name = "boss";
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").bossMove_A();

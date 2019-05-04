@@ -157,7 +157,7 @@
   <object id="55" name="flag" type="flag" x="3416" y="40">
    <point/>
   </object>
-  <object id="41" name="mushroom_mon" type="monster" x="360" y="184">
+  <object id="41" name="mushroom_mon" type="monster" x="360" y="56">
    <point/>
   </object>
   <object id="42" name="mushroom_mon" type="monster" x="520" y="184">
