@@ -65,6 +65,7 @@ export default class gameScene extends cc.Component {
     onEnable() {
         EventManager.getInstance().on(EventConst.UPDATE_UI, this.updateUINode.bind(this));
         EventManager.getInstance().on(EventConst.GAMEOVER, this.gameEnd.bind(this));
+        EventManager.getInstance().on(EventConst.INIT_MONSTER, this.initMonster.bind(this));
         let collisionManager = cc.director.getCollisionManager();
         collisionManager.enabled = true;//开启碰撞检测
         //collisionManager.enabledDebugDraw = true;//画边线
@@ -74,6 +75,7 @@ export default class gameScene extends cc.Component {
     onDisable() {
         EventManager.getInstance().off(EventConst.UPDATE_UI);     
         EventManager.getInstance().off(EventConst.GAMEOVER);
+        EventManager.getInstance().off(EventConst.INIT_MONSTER);
     }
 
     start() {

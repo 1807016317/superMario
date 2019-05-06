@@ -75,16 +75,21 @@ export default class tiledMapUtil extends cc.Component {
             let checkNum = myApp.getInstance().checkNum;
             let maxCheck = dataConst.CHECK.length;
             if (final_rect.intersects(player1_box) && checkNum <= maxCheck) {
-                myApp.getInstance().checkNum = dataConst.CHECK[checkNum].checkNum + 1;
+                this.unschedule(this.scheduleCollision(null));
+                myApp.getInstance().checkNum = dataConst.CHECK[checkNum].checkNum - 1;
                 myApp.getInstance().checkStr = dataConst.CHECK[checkNum].checkStr;
                 EventManager.getInstance().emit(EventConst.UPDATE_UI);
                 UIUtil.loaderRes(mapData.data[myApp.getInstance().checkNum].name, cc.TiledMapAsset, (mapAsset) => {
                     this._curMap.tmxAsset = mapAsset;
                     this.updateSize();
+                    let objectGroups = this._curMap.getObjectGroups();
+                    let player1_Obj = objectGroups[0].getObject("player1");
+                    player1.setPosition(player1_Obj.x, player1_Obj.y);
+                    this.init();
+                    player1.zIndex = dataConst.PIPE_LAYER - 1;
+                    EventManager.getInstance().emit(EventConst.INIT_MONSTER);
+                    EventManager.getInstance().emit(EventConst.COLLSION_HANDLE);
                 })
-                let objectGroups = this._curMap.getObjectGroups();
-                let player1_Obj = objectGroups[0].getObject("player1");
-                player1.setPosition(player1_Obj.x, player1_Obj.y);
             }
         }
     }
@@ -98,9 +103,13 @@ export default class tiledMapUtil extends cc.Component {
      * 传入节点与TiledLayer碰撞检测
      */
     scheduleCollision(event) {
-        this.schedule(() => {
+        function checkCollision() {
             this.collision(event)
-        }, 0);
+        }
+        this.schedule(checkCollision, 0);
+        if(event === null) {
+            return checkCollision;
+        }
     }
 
     collision(event) {

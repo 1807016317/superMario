@@ -19,6 +19,13 @@ export default class monsterFactory extends cc.Component {
 
     init(obj, parentNode: cc.Node) {
         this._parentNode = parentNode;
+        let monster = parentNode.children;
+        for (const key in monster) {
+            if (UIUtil.checkDataIsNull(monster[key]["type"]) && 
+            monster[key]["type"] == dataConst.roleType.monster) {
+                monster[key].destroy();
+            }
+        }
         this.initMushroom(obj);
         this.initFlower(obj);
         this.initTortoise(obj);
@@ -40,6 +47,7 @@ export default class monsterFactory extends cc.Component {
                 let monster = cc.instantiate(this.monsterPrefab);
                 monster.name = "mushroom_mon" + key;
                 monster.parent = this._parentNode;
+                monster.zIndex = dataConst.PIPE_LAYER - 1;
                 monster["type"] = dataConst.roleType.monster;
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
@@ -66,6 +74,7 @@ export default class monsterFactory extends cc.Component {
                 monster["type"] = dataConst.roleType.monster;
                 monster.name = "flower_mon" + key;
                 monster.parent = this._parentNode;
+                monster.zIndex = dataConst.PIPE_LAYER - 1;
                 monster["moveType"] = dataConst.monsterMoveType.portrait;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").flowerAnimate();
@@ -91,6 +100,7 @@ export default class monsterFactory extends cc.Component {
                 monster.parent = this._parentNode;
                 monster["type"] = dataConst.roleType.monster;
                 monster.name = "tortoise" + key;
+                monster.zIndex = dataConst.PIPE_LAYER - 1;
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").tortoiseMove_A();
@@ -110,6 +120,7 @@ export default class monsterFactory extends cc.Component {
                 monster.parent = this._parentNode;
                 monster["type"] = dataConst.roleType.monster;
                 monster.name = "boss";
+                monster.zIndex = dataConst.PIPE_LAYER - 1;
                 monster["moveType"] = dataConst.monsterMoveType.transverse;
                 monster.group = dataConst.GROUP.monster;
                 monster.getComponent("monsterControl").bossMove_A();

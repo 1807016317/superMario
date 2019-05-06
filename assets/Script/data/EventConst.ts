@@ -14,6 +14,7 @@ export default class EventConst {
     static GAMEOVER = "gameOver"; //死掉检测
     static CHECK_FALL = "check_fall"; //玩家下落判定
     static ADD_SCORE = "addScore"; //玩家加分
+    static INIT_MONSTER = "init_monster";//初始化怪物
 
     /**
      * @:音效事件

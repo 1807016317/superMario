@@ -32,8 +32,8 @@ export default class GM extends cc.Component {
     toFinal() {
         let width = myApp.getInstance().tileNode.width * myApp.getInstance().fixScale;
         let h = myApp.getInstance().tileNode.height * myApp.getInstance().fixScale;
-        myApp.getInstance().player1Node.x = width - 100;
-        myApp.getInstance().player1Node.y = 32;
+        myApp.getInstance().player1Node.x = myApp.getInstance().tileNode.width - 200;
+        myApp.getInstance().player1Node.y = 100;
         this.closeBtn();
     }
 
@@ -41,8 +41,8 @@ export default class GM extends cc.Component {
      * 回到起点
      */
     backStart() {
-        myApp.getInstance().player1Node.x = 50;
-        myApp.getInstance().player1Node.y = 32;
+        myApp.getInstance().player1Node.x = 100;
+        myApp.getInstance().player1Node.y = 100;
         this.closeBtn();
     }
 

@@ -27,7 +27,7 @@ export default class monsterControl extends cc.Component {
     //onLoad () {}
 
     onEnable() {
-        EventManager.getInstance().on(EventConst.COLLSION_HANDLE, this.onCollisionMapLayer.bind(this));
+        EventManager.getInstance().on(EventConst.COLLSION_HANDLE, this.initCheck.bind(this));
         EventManager.getInstance().on(EventConst.CHECK_FALL, this.chackFallDown.bind(this));
     }
 
@@ -38,6 +38,10 @@ export default class monsterControl extends cc.Component {
 
     start() {
         //EventManager.getInstance().emit(EventConst.CHECK_COLLSION, this.node);
+        this.initCheck();
+    }
+
+    initCheck() {
         if (this.node["moveType"] != dataConst.monsterMoveType.portrait) {
             EventManager.getInstance().emit(EventConst.CHECK_COLLSION, this.node, this.onCollisionMapLayer.bind(this), this.chackFallDown.bind(this));
         }

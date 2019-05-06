@@ -35,7 +35,7 @@ export default class player1Control extends cc.Component {
 
     onEnable() {
         this.node.on('size-changed', this.changeBoxCollider, this);
-        EventManager.getInstance().on(EventConst.COLLSION_HANDLE, this.onCollisionMapLayer.bind(this));
+        EventManager.getInstance().on(EventConst.COLLSION_HANDLE, this.initCheck.bind(this));
         EventManager.getInstance().on(EventConst.ANIMATION_PLAY, this.animationPlay.bind(this));
         EventManager.getInstance().on(EventConst.CHECK_FALL, this.chackFallDown.bind(this));
         EventManager.getInstance().on(EventConst.ADD_SCORE, this.addScore.bind(this));
@@ -51,6 +51,10 @@ export default class player1Control extends cc.Component {
 
     start() {
         this._animation = this.node.getComponent(cc.Animation);
+        this.initCheck()
+    }
+
+    initCheck() {
         EventManager.getInstance().emit(EventConst.CHECK_COLLSION, this.node, this.onCollisionMapLayer.bind(this), this.chackFallDown.bind(this));
     }
 

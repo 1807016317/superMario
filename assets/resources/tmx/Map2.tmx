@@ -143,7 +143,7 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object id="1" name="player1" type="player" x="32" y="176" width="14" height="16"/>
+  <object id="1" name="player1" type="player" x="32" y="160" width="14" height="16"/>
   <object id="2" name="fly_fish_1" type="monster" x="319" y="195">
    <properties>
     <property name="duration" value="1"/>
